@@ -38,3 +38,50 @@ export const getUsers = async(_req, res) => {
     res.json("received");
   }
   
+  export const getUser = async (req, res) => {
+    const { id } = req.params;
+    try {
+      const user = await User.findOne({
+        where: {
+          id,
+        },
+      });
+      if (!user) return res.status(404).json({message: "user does not exist"})
+      res.json(user);
+    } catch (error) {
+      res.status(500).json({
+        message: error.message,
+      });
+    }
+  }
+
+  export const updateUser = async (req, res) => {
+    const { id } = req.params; 
+    try {
+        const updated = await User.update(req.body, {
+            where: { id: id }
+        });
+        if (updated) {
+            const updatedUser = await User.findOne({ where: { id: id } });
+            res.json({ message: 'User updated successfully', user: updatedUser });
+        } else {
+            res.status(404).json({ message: 'User not found' });
+        }
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}
+
+export const deleteUser = async (req, res) => {
+  const { id } = req.params;
+  try { 
+    await User.destroy({
+      where: {
+        id,
+      },
+    });
+    return res.sendStatus(204);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+}
