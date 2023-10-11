@@ -1,5 +1,8 @@
 import  express  from "express";
 import cors from "cors";
+import "./models/Users.js";
+import "./models/products.js";
+import "./models/age_filter.js";
 
 export const app = express()
 app.get('/', (req , res) =>{

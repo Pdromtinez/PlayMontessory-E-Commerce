@@ -25,6 +25,8 @@ CREATE TABLE `products` (
   `age_id` integer,
   `created_at` timestamp
 );
+
+
 CREATE TABLE `age` (
   `id` integer PRIMARY KEY,
   `range` varchar(255)

@@ -1,38 +1,36 @@
 import db from "../database/db.js";
 import { DataTypes } from "sequelize";
-import { Products } from "./products.js";
 
-export const Users = db.define(
-    "users",
+export const Products = db.define(
+    "products",
     {
         id: {
             type: DataTypes.UUID,
             defaultValue: DataTypes.UUIDV4,
             primaryKey: true,
         },
-        user_name: {
+        product_image: {
             type: DataTypes.STRING,
         },
-        user_lastname:{
+        product_title:{
             type: DataTypes.STRING,
         },
-        user_email:{
+        product_description:{
+            type:DataTypes.TEXT,
+        },
+        product_brand:{
             type:DataTypes.STRING,
         },
-        user_password:{
-            type:DataTypes.STRING,
+        product_price:{
+            type:DataTypes.INTEGER,
         },
-        user_role:{
-            type:DataTypes.STRING,
+        product_stock:{
+            type:DataTypes.INTEGER,
         },
+        
     },
     {
         timestamps:true,
     },
 )
 
-Users.hasMany(Products, {
-    foreignKey: "userId",
-    sourceKey: "id",
-})
-Products.belongsTo (Users, { foreignkey: "userId", targetId: "id" });
