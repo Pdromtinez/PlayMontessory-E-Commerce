@@ -1,7 +1,7 @@
 import db from "../database/db.js";
 import { DataTypes } from "sequelize";
 
-export const Products = db.define(
+export const Product = db.define(
     "products",
     {
         id: {

@@ -1,8 +1,8 @@
 import db from "../database/db.js";
 import { DataTypes } from "sequelize";
-import { Products } from "./products.js";
+import { Product } from "./products.js";
 
-export const Users = db.define(
+export const User = db.define(
     "users",
     {
         id: {
@@ -31,8 +31,8 @@ export const Users = db.define(
     },
 )
 
-Users.hasMany(Products, {
+User.hasMany(Product, {
     foreignKey: "userId",
     sourceKey: "id",
 })
-Products.belongsTo (Users, { foreignkey: "userId", targetId: "id" });
+Product.belongsTo (User, { foreignkey: "userId", targetId: "id" });

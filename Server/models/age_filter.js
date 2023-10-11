@@ -1,6 +1,6 @@
 import db from "../database/db.js";
 import { DataTypes } from "sequelize";
-import { Products } from "./products.js";
+import { Product } from "./products.js";
 
 export const AgeFilter = db.define(
     "age_filter",
@@ -19,8 +19,8 @@ export const AgeFilter = db.define(
     },
 )
 
-AgeFilter.hasMany(Products, {
+AgeFilter.hasMany(Product, {
     foreignKey: "ageFilterId",
     sourceKey: "id",
 })
-Products.belongsTo (AgeFilter, { foreignkey: "ageFilterId", targetId: "id" });
+Product.belongsTo (AgeFilter, { foreignkey: "ageFilterId", targetId: "id" });

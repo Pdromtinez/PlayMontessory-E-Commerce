@@ -1,8 +1,7 @@
 import  express  from "express";
 import cors from "cors";
-import "./models/Users.js";
-import "./models/products.js";
-import "./models/age_filter.js";
+import userRoutes from "./Routes/users.routes.js";
+
 
 export const app = express()
 app.get('/', (req , res) =>{
@@ -11,3 +10,5 @@ app.get('/', (req , res) =>{
 
 app.use(cors());
 app.use(express.json())
+
+app.use("/toymontessori/users", userRoutes);
