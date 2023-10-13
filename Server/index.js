@@ -14,4 +14,4 @@ try{
         console.log('error: ${error}')
 	}
 
-main()
+main();
