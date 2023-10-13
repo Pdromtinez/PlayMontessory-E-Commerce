@@ -11,7 +11,7 @@ export const AgeFilter = db.define(
             primaryKey: true,
         },
         age_range: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
         },
     },
     {
