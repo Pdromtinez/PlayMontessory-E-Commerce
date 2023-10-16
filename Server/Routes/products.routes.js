@@ -1,10 +1,10 @@
 import { Router } from "express";
 import { createProducts, deleteProduct, getProduct, getProducts, updateProduct } from "../Controllers/product.controller.js";
-
+import { verifyToken } from "../middleware/validatorToken.js";
 
 const router = Router();
 
-router.post("/", createProducts);
+router.post("/",createProducts);
 router.get("/", getProducts);
 router.get("/:id/products");
 router.get("/:id",getProduct);

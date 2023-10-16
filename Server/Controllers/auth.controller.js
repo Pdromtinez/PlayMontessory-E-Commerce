@@ -1,12 +1,12 @@
 import jwt from "jsonwebtoken"
 import bcrypt from "bcrypt"
 import { User } from "../models/Users.js"
-import { decrypt } from "dotenv";
+import { tokenSecret } from "../config.js";
 
 
 const saltRounds = 10;
 
-const secretKey = "SECRET-KEY"
+
 
 const  authController = {
 
@@ -52,7 +52,7 @@ const  authController = {
                 return res.status(401).json({message: "Invalid Password"})
             }
 
-            const token = jwt.sign({userId: user.id}, secretKey);
+            const token = jwt.sign({userId: user.id}, tokenSecret);
 
             return res.status(200).json(token)}
         catch(error){
