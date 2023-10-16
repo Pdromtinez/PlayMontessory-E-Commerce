@@ -90,7 +90,9 @@ const {id} = req.params
 try {
     await Product.destroy ({where: {AgeFilterId:id}})
     await AgeFilter.destroy({where:{id}});
-  return res.sendStatus(204);
+  return res.sendStatus(204).json ({
+    message: "product deleted",
+  });
   
 } catch (error) {
   return res.status(500).json({
