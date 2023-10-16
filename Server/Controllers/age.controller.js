@@ -1,4 +1,5 @@
 import { AgeFilter } from "../models/ageFilter.js";
+import { Product } from "../models/products.js";
 
 
 // Get
@@ -29,6 +30,22 @@ export const getAge = async (req, res) => {
     });
   }
 }
+
+
+export const getProductsAge = async (req, res) => {
+  const {id} = req.params
+  try {
+    const product = await Product.findAll({where:{AgeFilterId: id}});
+    res.json(product);
+  } catch (error) {
+    {
+      res.status(500).json({
+        message: error.message,
+      });
+  }
+}
+}
+
 
 
 // Post
