@@ -17,10 +17,10 @@ export const getProducts = async(_req, res) => {
 export const getProduct = async (req, res) => {
   const {id} = req.params
   try {
-    const Product = await Product.findOne({where:{id}});
-    if (!Product)
+    const product = await Product.findOne({where:{id}});
+    if (!product)
     return res.status(404).json({message: "Product not found"});
-    res.json(Product);
+    res.json(product);
   } catch (error) {
     res.status(500).json({
       message: error.message,
@@ -70,10 +70,10 @@ export const updateProduct = async(req , res) => {
 export const deleteProduct = async(req , res) => {
 const {id} = req.params
 try {
-  const Product = await Product.destroy({where:{id}});
-  if (!Product)
+  const product = await Product.destroy({where:{id}});
+  if (!product)
   return res.status(404).json({message: "Product not found"});
-  res.json(Product);
+  res.json(product);
 } catch (error) {
   res.status(500).json({
     message: error.message,
