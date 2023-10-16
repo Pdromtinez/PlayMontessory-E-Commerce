@@ -88,13 +88,15 @@ export const updateAge = async(req , res) => {
 export const deleteAge = async(req , res) => {
 const {id} = req.params
 try {
-  const Age = await AgeFilter.destroy({where:{id}});
-  if (!Age)
-  return res.status(404).json({message: "Range not found"});
-  res.json(Age);
+    await Product.destroy ({where: {AgeFilterId:id}})
+    await AgeFilter.destroy({where:{id}});
+  return res.sendStatus(204);
+  
 } catch (error) {
-  res.status(500).json({
+  return res.status(500).json({
     message: error.message,
   });
 }
 }
+
+
