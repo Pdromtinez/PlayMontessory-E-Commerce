@@ -1,5 +1,6 @@
 import {app} from "./app.js";
 import db from "./database/db.js";
+import "./models/roles.js"
 
 async function main() {
     await db.sync(/*{force:true}*/)

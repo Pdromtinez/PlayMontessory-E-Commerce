@@ -22,9 +22,6 @@ export const User = db.define(
         user_password:{
             type:DataTypes.STRING,
         },
-        user_role:{
-            type:DataTypes.STRING,
-        },
     },
     {
         timestamps:true,
@@ -36,3 +33,4 @@ User.hasMany(Product, {
     sourceKey: "id",
 })
 Product.belongsTo (User, { foreignkey: "userId", targetId: "id" });
+
