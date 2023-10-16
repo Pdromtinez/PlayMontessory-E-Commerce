@@ -1,6 +1,7 @@
 
 import { User } from "../models/Users.js";
 import bcrypt from "bcrypt"
+import { Product } from "../models/products.js";
 
 export const getUsers = async(_req, res) => {
     try {
@@ -81,8 +82,14 @@ export const deleteUser = async (req, res) => {
         id,
       },
     });
+    await Product.destroy({
+      where: {
+        id,
+      },
+    });
     return res.sendStatus(204);
   } catch (error) {
     return res.status(500).json({ message: error.message });
+  
   }
 }
