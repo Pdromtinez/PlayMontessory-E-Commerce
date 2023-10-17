@@ -1,13 +1,13 @@
 import { Router } from "express";
 import { createAges, deleteAge, getAge, getAges, updateAge, getProductsAge } from "../Controllers/age.controller.js";
-import { verifyToken } from "../middleware/validatorToken.js";
+import { isAdmin, verifyToken } from "../middleware/validatorToken.js";
 
 
 
 const router = Router();
 
-router.post("/",  createAges);
-router.get("/",verifyToken, getAges);
+router.post("/", createAges);
+router.get("/",verifyToken, isAdmin, getAges);
 router.get("/:id/products", getProductsAge);
 router.get("/:id",getAge);
 router.put("/:id",updateAge);
