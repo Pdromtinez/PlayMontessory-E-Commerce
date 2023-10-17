@@ -12,7 +12,7 @@ export const verifyToken = async (req,res,next) => {
         const decodedToken = jwt.verify (token, tokenSecret);
         console.log(decodedToken)
         req.userId = decodedToken.id;
-        const user = await User.findByPk (req.userId, {password:0});
+        const user = await User.findOne (req.userId);
         if (!user){
             return res.status(404).json ({message:"user not found"})
         }
@@ -23,13 +23,27 @@ export const verifyToken = async (req,res,next) => {
 }
 
 export const isAdmin = async (req, res, next) => {
-    const user = await User.findByPk(req.userId)
-    const roles = await Roles.findByPk({ where: {id: user.rolesId}})
+    try {
+        const token = req.headers["x-access-token"];
+        const decodedToken = jwt.verify(token, tokenSecret);
+        console.log(decodedToken);
+        req.userId = decodedToken.id;
 
-    if (user && roles === 'admin') {
-      next(); 
-    } else {
-      res.status(403).json({ error: 'Acceso denegado' });
-    };
-  };
-  
+        const user = await User.findOne(req.userId, {where: {id : User.rolesId}});
+        console.log(user)
+        const roles = await Roles.findOne({ where: { id: user.rolesId } });
+
+        if (roles === Roles.id) {
+            next();
+        } else {
+            res.status(403).json({ error: 'Acceso denegado' });
+        }
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
+
+
+
+
