@@ -28,12 +28,11 @@ export const isAdmin = async (req, res, next) => {
         const decodedToken = jwt.verify(token, tokenSecret);
         console.log(decodedToken);
         req.userId = decodedToken.id;
-
-        const user = await User.findOne(req.userId, {where: {id : User.rolesId}});
+        const user = await User.findOne(req.userId);
         console.log(user)
-        const roles = await Roles.findOne({ where: { id: user.rolesId } });
-
-        if (roles === Roles.id) {
+        const roles = await Roles.findOne({ where: { id: user.rolesId} });
+        console.log(roles)
+        if ( user.id === req.userId && roles.user_role === "admin") {
             next();
         } else {
             res.status(403).json({ error: 'Acceso denegado' });
@@ -42,8 +41,3 @@ export const isAdmin = async (req, res, next) => {
         res.status(500).json({ error: error.message });
     }
 };
-
-
-
-
-

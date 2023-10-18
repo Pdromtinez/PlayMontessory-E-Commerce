@@ -14,7 +14,7 @@ const  authController = {
 
     register: async (req, res) => {
     try{
-        const {user_name, user_lastname,  user_email, user_password, user_role} = req.body;
+        const {user_name, user_lastname,  user_email, user_password, rolesId} = req.body;
 
         const existingUser = await User.findOne({where : {user_email}})
         if(existingUser){
@@ -29,7 +29,7 @@ const  authController = {
             user_lastname,
             user_email,
             user_password: hashedPassword,
-            user_role
+            rolesId
         
     })
     if(newUser){

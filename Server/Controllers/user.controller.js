@@ -6,7 +6,7 @@ import { Product } from "../models/products.js";
 export const getUsers = async(_req, res) => {
     try {
       const Users = await User.findAll({
-        atributes: ["id", "user_name", "user_lastname", "user_email", "user_password", "user_role"],
+        atributes: ["id", "user_name", "user_lastname", "user_email", "user_password", "userId"],
       });
       res.json(Users);
     } catch (error) {
@@ -18,7 +18,7 @@ export const getUsers = async(_req, res) => {
 
 
    export const createUser = async (req, res) => {
-    const { user_name, user_lastname, user_email, user_password, user_role } = req.body;
+    const { user_name, user_lastname, user_email, user_password, userId } = req.body;
 
     const passwordHash = await bcrypt.hash(user_password, 10)
     try {
@@ -28,9 +28,10 @@ export const getUsers = async(_req, res) => {
           user_lastname,
           user_email,
           user_password: passwordHash,
-          user_role
+          userId
         });
-       const userSaved = await newUser.save();
+
+      const userSaved = await newUser.save();
       return res.json(userSaved);
     } catch (error) {
       res.status(500).json({
