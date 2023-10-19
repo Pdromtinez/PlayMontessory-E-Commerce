@@ -1,11 +1,18 @@
 import { Outlet } from 'react-router-dom'
+import NavBar from '../Components/Nav/NavBar'
+import NavList from '../Components/Nav/Nav'
+import ProductsCarousel from '../Components/Carousel/carausel'
+import Footer from '../Components/Footer/Footer'
 
 function Root() {
   return (
     <div>
-      <h1>SOY UN NAVBAR</h1>
+      <NavBar/>
+      <NavList/>
+      <ProductsCarousel/>
       <Outlet/>
-      <h1>SOY UN FOOTER</h1>
+      <Footer/>
+
     </div>
   )
 }
