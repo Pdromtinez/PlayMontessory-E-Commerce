@@ -23,19 +23,26 @@ const  authController = {
 
     const hashedPassword = await bcrypt.hash(user_password, saltRounds)
 
-    const roleUser = await Roles.findOne({where: {user_role: "users"}})
-    const newUser = await User.create({
-        
-            user_name,
-            user_lastname,
-            user_email,
-            user_password: hashedPassword,
-            roleId : roleUser,
-        
-    })
-    if(newUser){
-        return res.status(201).json({message: "User Created"})
+    // ...
+
+const newUser = await User.create({
+    user_name,
+    user_lastname,
+    user_email,
+    user_password: hashedPassword,
+});
+
+if (newUser) {
+    // Asigna el rol "cliente" al nuevo usuario
+    
+    const clienteRole = await Roles.findOne({ where: { user_role: "client" } });
+    if (clienteRole) {
+        await newUser.setRole(clienteRole);
     }
+
+    return res.status(201).json({ message: "User Created" });
+}
+
 }catch(error){
     return res.status(500).json({message: error})
 }},

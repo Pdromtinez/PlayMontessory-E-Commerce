@@ -43,7 +43,7 @@ function Register() {
         <Form.Label>Email address</Form.Label>
         <Form.Control type="email" value={user_email} onChange={(e)=>setUserEmail(e.target.value)} placeholder="Enter email" />
         <Form.Text className="text-muted">
-          We'll never share your email with anyone else.
+          We`ll never share your email with anyone else.
         </Form.Text>
       </Form.Group>
 
