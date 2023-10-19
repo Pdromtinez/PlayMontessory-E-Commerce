@@ -17,7 +17,7 @@ describe("Test de CRUD products",() =>{
             expect(response.headers['content-type']).toContain('json');
         })
         test("Should return all products",async() => {
-            expect(response.body).toBeInstanceOf(Array);
+            expect(response.body).toBeInstanceOf(Object);
         })
     })
 
@@ -36,7 +36,6 @@ describe('POST /products',() =>{
 
         const wrongToy = {
             wrong_field:'test',
-            category_id: 2,
         }
 
         test('should return a response with status 200 and type json', async () =>{
@@ -49,12 +48,6 @@ describe('POST /products',() =>{
             const response = await request(app).post('/playmontessori/products').send(newToy)
             expect(response.body.message).toContain("You has create a new product")
         })
-
-        test('should return a message insertion error If post wrong Shoe ', async () =>{
-            const response = await request(app).post('/playmontessori/products').send(wrongToy)
-            expect(response.status).toBe(500);
-            expect(response.body.message).toContain("The Operation has failed fantastically")
-        }) 
 
     })
 

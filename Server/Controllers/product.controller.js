@@ -36,9 +36,7 @@ export const createProducts = async(req , res) => {
     await Product.create(req.body) 
     res.json({message: "You has create a new product"});
   } catch (error) {
-    res.status(500).json({
-      message: error
-    });
+    res.status(500).json({message: error});
   }
 }
 
@@ -49,15 +47,13 @@ export const updateProduct = async(req , res) => {
   const{id} = req.params
   try{
     const updated = await Product.update (req.body,{where:{id}});
-    res.json({message: "Update product successfully"})
+    res.json({message: "Update product successfully"});
     if (updated){
         const updatedProduct = await Product.findOne({where:{id}});
     res.json({message: "Update product successfully", product:updatedProduct})
     }
   } catch(error) {
-    res.status(500).json({
-      message: "product not found"
-  })
+
     };
   }
 
@@ -71,7 +67,6 @@ try {
   res.json({message: "Product deleted successfully!"})
   res.json(product);
 } catch (error) {
-    res.status(404).json({message: "Product not found"});
   };
 }
 
