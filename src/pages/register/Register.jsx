@@ -9,6 +9,7 @@ function Register() {
   const [user_lastname, setUserlastname] = useState("")
   const [user_email, setUserEmail] = useState("")
   const [user_password,setUserPassword] = useState("")
+
   const handleSummit = async(e)=>{
     e.preventDefault()
 
@@ -17,7 +18,9 @@ function Register() {
       headers:{
         "Content-Type": "application/json",
       },
+
       body: JSON.stringify({user_name, user_lastname,  user_email, user_password}),
+
       }) 
       if (response.ok){
         const data = await response.json()
@@ -25,6 +28,7 @@ function Register() {
   }
 
   return (
+
 
     <Form onSubmit={handleSummit}>
 
@@ -39,20 +43,25 @@ function Register() {
         </Form.Group>
 
 
+
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
         <Form.Control type="email" value={user_email} onChange={(e)=>setUserEmail(e.target.value)} placeholder="Enter email" />
         <Form.Text className="text-muted">
+
           We`ll never share your email with anyone else.
+
         </Form.Text>
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Password</Form.Label>
+
         <Form.Control type="password" placeholder="Password" value={user_password} onChange={(e)=>setUserPassword(e.target.value)} />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicCheckbox"> 
         <Form.Check type="checkbox" label="Accept terms and conditions" required />
+
       </Form.Group>
       <Button variant="primary" type="submit">
         Submit
