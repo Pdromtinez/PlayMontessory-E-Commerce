@@ -2,7 +2,7 @@ import jwt from "jsonwebtoken"
 import bcrypt from "bcrypt"
 import { User } from "../models/Users.js"
 import { tokenSecret } from "../config.js";
-
+import { Roles } from "../models/roles.js";
 
 const saltRounds = 10;
 
@@ -14,7 +14,7 @@ const  authController = {
 
     register: async (req, res) => {
     try{
-        const {user_name, user_lastname,  user_email, user_password, rolesId} = req.body;
+        const {user_name, user_lastname,  user_email, user_password} = req.body;
 
         const existingUser = await User.findOne({where : {user_email}})
         if(existingUser){
@@ -23,20 +23,21 @@ const  authController = {
 
     const hashedPassword = await bcrypt.hash(user_password, saltRounds)
 
+    const roleUser = await Roles.findOne({where: {user_role: "users"}})
     const newUser = await User.create({
         
             user_name,
             user_lastname,
             user_email,
             user_password: hashedPassword,
-            rolesId
+            roleId : roleUser,
         
     })
     if(newUser){
         return res.status(201).json({message: "User Created"})
     }
 }catch(error){
-    return res.status(500).json({message: message.error})
+    return res.status(500).json({message: error})
 }},
 
 //User Login
@@ -56,7 +57,7 @@ const  authController = {
 
             return res.status(200).json(token)}
         catch(error){
-        return res.status(500).json({message: message.error})
+        return res.status(500).json({message: error})
         }
 
 }

@@ -2,6 +2,7 @@
 import { User } from "../models/Users.js";
 import bcrypt from "bcrypt"
 import { Product } from "../models/products.js";
+import { Roles } from "../models/roles.js";
 
 export const getUsers = async(_req, res) => {
     try {
@@ -28,8 +29,10 @@ export const getUsers = async(_req, res) => {
           user_lastname,
           user_email,
           user_password: passwordHash,
-          userId
+          userId //roles_id
         });
+
+      
 
       const userSaved = await newUser.save();
       return res.json(userSaved);
