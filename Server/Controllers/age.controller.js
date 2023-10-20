@@ -85,20 +85,19 @@ export const updateAge = async(req , res) => {
 
 //Delete
 
-export const deleteAge = async(req , res) => {
-const {id} = req.params
-try {
-    await Product.destroy ({where: {AgeFilterId:id}})
-    await AgeFilter.destroy({where:{id}});
-  return res.sendStatus(204).json ({
-    message: "product deleted",
-  });
-  
-} catch (error) {
-  return res.status(500).json({
-    message: error.message,
-  });
+export const deleteAge = async (req, res) => {
+  const { id } = req.params;
+  try {
+    await Product.destroy({ where: { AgeFilterId: id } });
+    await AgeFilter.destroy({ where: { id } });
+
+    res.sendStatus(204);
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
 }
-}
+
 
 
