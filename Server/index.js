@@ -3,7 +3,7 @@ import db from "./database/db.js";
 import "./models/roles.js"
 
 async function main() {
-    await db.sync({/*force:true+*/})
+    await db.sync({/*force:true*/})
     app.listen(6700);
     console.log('🚀server up in http://localhost:6700/')
 }

@@ -1,6 +1,12 @@
 CREATE database db_montessori;
 use db_montessori;
 
+----------------------
+
+CREATE DATABASE db_montessoriTest;
+use db_montessoriTest;
+
+---------------------
 
 CREATE TABLE `users` (
   `id` integer PRIMARY KEY,
