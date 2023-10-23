@@ -1,6 +1,6 @@
 import { Product } from "../models/products.js";
-
-
+import { deleteImage, uploadImage } from "../utils/cloudinary.js";
+import fs from "fs-extra"
 // Get
 
 export const getProducts = async(_req, res) => {
@@ -31,16 +31,42 @@ export const getProduct = async (req, res) => {
 
 // Post
 
-export const createProducts = async(req , res) => {
+
+export const createProducts = async (req, res) => {
   try {
-    await Product.create(req.body) 
-    res.json({message: "You has create a new product"});
-  } catch (error) {
-    res.status(500).json ({
-      message: error.message
+    const { product_title, product_description, product_brand, product_price, product_stock } = req.body;
+
+    if (!product_title) return res.status(404).json({ message: 'product_title is required' });
+
+    const newProduct = new Product({
+      product_title,
+      product_description,
+      product_brand,
+      product_price,
+      product_stock
     });
+
+    if (req.files?.image) {
+      const result = await uploadImage(req.files.image.tempFilePath);
+      newProduct.image = {
+        public_id: result.public_id,
+        secure_url: result.secure_url,
+      };
+      await fs.unlink(req.files.image.tempFilePath);
+    }
+
+    await newProduct.save();
+
+    res.json({ message: "You have created a new product" });
+  } catch (error) {
+    if (req.files?.image) {
+      await fs.unlink(req.files.image.tempFilePath);
+    }
+    res.status(500).json({ message: error.message });
   }
-}
+};
+
+
 
 //Update
 
@@ -67,16 +93,28 @@ export const updateProduct = async(req , res) => {
 
 //Delete
 
-export const deleteProduct = async(req , res) => {
-const {id} = req.params
-try {
-  const product = await Product.destroy({where:{id}});
-  if (!product)
-  return res.status(404).json({message: "Product not found"});
-  res.json(product);
-} catch (error) {
-  res.status(500).json({
-    message: error.message,
-  });
-}
-}
+export const deleteProduct = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const product = await Product.findOne({ where: { id } });
+
+    if (!product) {
+      return res.status(404).json({ message: "Product not found" });
+    }
+
+    // Check if the product has an image before trying to delete it
+    if (product.image?.public_id) {
+      await deleteImage(product.image.public_id);
+    }
+
+    // Delete the product from the database
+    await product.destroy();
+
+    res.json({ message: "Product deleted successfully" });
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
+};
