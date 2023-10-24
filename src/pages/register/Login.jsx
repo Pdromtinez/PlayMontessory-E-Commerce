@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
-import "./login.css"
+import "./login.css";
+import { Link } from 'react-router-dom';
 
 function Login() {
   const [user_email, setEmail] = useState('');
@@ -51,10 +52,11 @@ function Login() {
       </Form>
     </div>
     <div className='account'>
-    <h2 className='loginLabel'>Do you not have an account?</h2>
-    <Button className='buttonLogin' type="submit">
-          Register
+    <h2 className='loginLabel'>You don't have an account?</h2>
+    <Link to ="/register"><Button className='buttonLogin' type="submit">
+    Sing Up For Free
     </Button>
+    </Link>
     </div>
     </>
   );

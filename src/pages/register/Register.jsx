@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import "./Register.css"
 
 
 function Register() { 
@@ -30,7 +31,8 @@ function Register() {
   return (
 
 
-    <Form onSubmit={handleSummit}>
+    <Form onSubmit={handleSummit} className='formSubmit'> 
+    <div className='labelForm'>Register</div>
 
       <Form.Group className="mb-3" controlId="formBasicName">
         <Form.Label> Name</Form.Label>
@@ -63,9 +65,11 @@ function Register() {
         <Form.Check type="checkbox" label="Accept terms and conditions" required />
 
       </Form.Group>
-      <Button variant="primary" type="submit">
+      <div className='buttonSubmit'>
+      <Button variant="primary" type="submit" className='buttonLogin'>
         Submit
       </Button>
+      </div>
     </Form>
   );
 }
