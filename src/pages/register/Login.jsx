@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import "./login.css";
+import { Form, Button } from 'react-bootstrap';
+import "./login.css"
 
 function Login() {
   const [user_email, setEmail] = useState('');
@@ -8,7 +9,6 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Envía la solicitud de inicio de sesión al servidor
     const response = await fetch('http://localhost:5000/api/login', {
       method: 'POST',
       headers: {
@@ -18,37 +18,45 @@ function Login() {
     });
 
     if (response.ok) {
-      
       const data = await response.json();
-
     } else {
       console.error('Error en el inicio de sesión');
     }
   };
 
   return (
+    <>
     <div className='formContainer'>
       <h2 className='loginLabel'>Welcome Back!</h2>
-      <form onSubmit={handleSubmit} className="loginForm">
-        <label className='emailLabel'>
-           E-mail:
-          <input
+      <Form onSubmit={handleSubmit} className="loginForm">
+        <Form.Group controlId="formBasicEmail">
+          <Form.Label>E-mail:</Form.Label>
+          <Form.Control
             type="email"
             value={user_email}
             onChange={(e) => setEmail(e.target.value)}
           />
-        </label>
-        <label className='passwordLabel'>
-          Password:
-          <input
+        </Form.Group>
+        <Form.Group controlId="formBasicPassword">
+          <Form.Label>Password:</Form.Label>
+          <Form.Control
             type="password"
             value={user_password}
             onChange={(e) => setPassword(e.target.value)}
           />
-        </label>
-        <button type="submit" className='buttonLogin'>Login</button>
-      </form>
+        </Form.Group>
+        <Button className='buttonLogin' type="submit">
+          Login
+        </Button>
+      </Form>
     </div>
+    <div className='account'>
+    <h2 className='loginLabel'>Do you not have an account?</h2>
+    <Button className='buttonLogin' type="submit">
+          Register
+    </Button>
+    </div>
+    </>
   );
 }
 
