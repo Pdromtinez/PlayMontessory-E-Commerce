@@ -1,0 +1,30 @@
+
+.list-footer{
+    list-style: none; 
+}
+.list-text-footer a{
+    text-decoration: none;
+}
+.end-footer {
+    margin-top: 0%;
+    padding: 0%;
+
+}
+.social-icons{
+    list-style: none;
+    background-image: linear-gradient(#310058, #7FD1FC);
+    display: flex;
+    align-items: baseline;
+    text-decoration: none;
+    margin-top: 4rem;
+}
+
+div.container-footer.container {
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+}
+
+.div-footer {
+    width: 100vw;
+}

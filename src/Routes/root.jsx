@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom'
 import NavBar from '../Components/Nav/NavBar'
 import NavList from '../Components/Nav/Nav'
-import ProductsCarousel from '../Components/Carousel/carausel'
+import ProductsCarousel from '../Components/Carousel/carousel'
 import Footer from '../Components/Footer/Footer'
 
 function Root() {
