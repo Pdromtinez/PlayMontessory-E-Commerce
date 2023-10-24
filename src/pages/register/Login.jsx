@@ -25,6 +25,7 @@ function Login() {
   };
 
   return (
+    <>
     <div className='formContainer'>
       <h2 className='loginLabel'>Welcome Back!</h2>
       <Form onSubmit={handleSubmit} className="loginForm">
@@ -49,6 +50,13 @@ function Login() {
         </Button>
       </Form>
     </div>
+    <div className='account'>
+    <h2 className='loginLabel'>Do you not have an account?</h2>
+    <Button className='buttonLogin' type="submit">
+          Register
+    </Button>
+    </div>
+    </>
   );
 }
 

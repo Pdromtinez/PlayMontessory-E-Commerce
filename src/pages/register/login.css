@@ -79,8 +79,9 @@
   opacity: .5;
 }
 
-input{
-border-radius: 5px;
-border:1px solid #D1434F;
-
+.account{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
