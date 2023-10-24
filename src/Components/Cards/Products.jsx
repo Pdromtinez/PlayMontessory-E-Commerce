@@ -27,15 +27,14 @@ const Products = () => {
                 <Card.Title>{product.product_title}</Card.Title>
                 <Accordion defaultActiveKey="0">
                   <Accordion.Item eventKey="0">
-                    <Accordion.Header>product description</Accordion.Header>
+                    <Accordion.Header>Read More</Accordion.Header>
                     <Accordion.Body>
                       {product.product_description}
                     </Accordion.Body>
                   </Accordion.Item>
                 </Accordion>
-                <Card.Text>{product.product_description}</Card.Text>
                 <Card.Text>Brand: {product.product_brand}</Card.Text>
-                <Card.Text>Price: ${product.product_price}</Card.Text>
+                <Card.Text>Price: €{product.product_price}</Card.Text>
                 <Card.Text>Stock: {product.product_stock}</Card.Text>
               </Card.Body>
             </Card>
