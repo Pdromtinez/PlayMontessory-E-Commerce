@@ -1,17 +1,17 @@
-import { useEffect, useState } from 'react';
-import { Card, Col, Container, Row } from 'react-bootstrap';
+import { useEffect, useState } from "react";
+import { Card, Col, Container, Row, Accordion } from "react-bootstrap";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:6700/playmontessori/products')
+    fetch("http://localhost:6700/playmontessori/products")
       .then((response) => response.json())
       .then((data) => {
         setProducts(data);
       })
       .catch((error) => {
-        console.error('Error al obtener los productos:', error);
+        console.error("Error al obtener los productos:", error);
       });
   }, []);
 
@@ -25,6 +25,14 @@ const Products = () => {
               <Card.Img src={product.image.secure_url} alt={product.image} />
               <Card.Body>
                 <Card.Title>{product.product_title}</Card.Title>
+                <Accordion defaultActiveKey="0">
+                  <Accordion.Item eventKey="0">
+                    <Accordion.Header>product description</Accordion.Header>
+                    <Accordion.Body>
+                      {product.product_description}
+                    </Accordion.Body>
+                  </Accordion.Item>
+                </Accordion>
                 <Card.Text>{product.product_description}</Card.Text>
                 <Card.Text>Brand: {product.product_brand}</Card.Text>
                 <Card.Text>Price: ${product.product_price}</Card.Text>
