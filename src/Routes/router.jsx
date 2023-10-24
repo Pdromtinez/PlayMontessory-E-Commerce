@@ -4,6 +4,7 @@ import Root from "./root";
 import Register from "../pages/register/Register";
 import Products from "../Components/Cards/Products";
 import AddProductForm from "../Components/AddProductsForm";
+import Login from "../pages/register/Login";
 
 
 
@@ -16,6 +17,10 @@ const router = createBrowserRouter ([
             {
                 path:"/register",
                 element: <Register/>
+            },
+            {
+                path:"/login",
+                element: <Login/>
             },
             {
                 path:"/products",
