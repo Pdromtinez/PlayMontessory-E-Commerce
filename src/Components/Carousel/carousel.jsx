@@ -1,4 +1,4 @@
-import './Carousel.css';
+import './carousel.css';
 import Carousel from 'react-bootstrap/Carousel';
 
 function ProductsCarousel() {
