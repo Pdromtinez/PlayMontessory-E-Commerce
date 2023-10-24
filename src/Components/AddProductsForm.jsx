@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Col } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom"; // Importa useNavigate
 
 const AddProductForm = () => {
@@ -9,6 +9,7 @@ const AddProductForm = () => {
     product_title: "",
     product_description: "",
     product_brand: "",
+    age_range: "",
     product_price: 0,
     product_stock: 0,
     image: null,
@@ -39,6 +40,7 @@ const AddProductForm = () => {
       formData.append('product_title', productData.product_title);
       formData.append('product_description', productData.product_description);
       formData.append('product_brand', productData.product_brand);
+      formData.append('age_range', productData.ageFilterId);
       formData.append('product_price', productData.product_price);
       formData.append('product_stock', productData.product_stock);
 
@@ -95,6 +97,11 @@ const AddProductForm = () => {
               onChange={handleChange}
               required
             />
+            <Form.Select as={Col} md="8" aria-label="Default select example" required defaultValue="">
+                <option value="" disabled>Ages</option>
+                <option value={productData.product_brand}>0-1</option>
+            </Form.Select> 
+
             <Form.Label>Precio del Producto</Form.Label>
             <Form.Control
               type="number"

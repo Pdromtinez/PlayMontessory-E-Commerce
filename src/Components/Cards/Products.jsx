@@ -34,6 +34,7 @@ const Products = () => {
                   </Accordion.Item>
                 </Accordion>
                 <Card.Text>Brand: {product.product_brand}</Card.Text>
+                <Card.Text>Age: {product.ageFilterId}</Card.Text>
                 <Card.Text>Price: €{product.product_price}</Card.Text>
                 <Card.Text>Stock: {product.product_stock}</Card.Text>
               </Card.Body>
