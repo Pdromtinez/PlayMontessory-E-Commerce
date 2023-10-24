@@ -10,6 +10,9 @@ return (
       <Nav.Item as="li">
         <Nav.Link eventKey="link-2">About Us</Nav.Link>
       </Nav.Item>
+      <Nav.Item as="li">
+        <Nav.Link eventKey="link-2">Login</Nav.Link>
+      </Nav.Item>
     </Nav>
   );
 }

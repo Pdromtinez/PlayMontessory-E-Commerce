@@ -8,31 +8,22 @@ import './NavBar.css'
 
 function NavBar() {
   return (
-    <Navbar expand="lg" className="bg-body-tertiary">
+   
       <Container className='container-navbar'>
 
         <Navbar.Brand><Link to="/"><img 
               alt=""
               src={Logo}
-              width="50"
-              height="50"
+              width="80"
+              height="80"
               className="d-inline-block align-top"
             /></Link>PlayMontessori</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
 
-          <Nav className="me-auto">
-            <Nav.Link href="#link"><Link to="/"><img 
-              alt=""
-              src={Login}
-              width="30"
-              height="30"
-              className="d-inline-block align-top"
-            /></Link>Login</Nav.Link>
-          </Nav>
         </Navbar.Collapse>
       </Container>
-    </Navbar>
+  
   );
 }
 

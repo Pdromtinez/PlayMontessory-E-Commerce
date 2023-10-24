@@ -14,12 +14,16 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    
+
 }
 .navbar-brand{
     color: #D1434F;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    font-size: 200%;
 }
 
 .nav-link{

@@ -14,9 +14,9 @@ function Footer () {
                 
                 <ul className="social-icons p-2 d-flex justify-content-around">
                     <li className="social-icons-footer text-primary">
-                        <a href="#facebook"><Image src={facebookIcon} alt="Facebook" className="social-icon"/></a></li>
-                    <li><a href="#instagram"><Image src={instagramIcon} alt="Instagram" className="social-icon"/></a></li>
-                    <li><a href="#tiktok"><Image src={tiktokIcon} alt="TikTok" className="social-icon"/></a></li>
+                        <a href="#facebook"><Image width ="20" src={facebookIcon} alt="Facebook" className="social-icon"/></a></li>
+                    <li><a href="#instagram"><Image width ="20" src={instagramIcon} alt="Instagram" className="social-icon"/></a></li>
+                    <li><a href="#tiktok"><Image width ="20" src={tiktokIcon} alt="TikTok" className="social-icon"/></a></li>
                 </ul>
                 <ul className="end-footer p-2 d-flex justify-content-center text-primary">
                     <h6>© 2023 PlayMontessori. All rights reserved.</h6>
