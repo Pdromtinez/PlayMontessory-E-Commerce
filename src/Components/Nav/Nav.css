@@ -1,0 +1,11 @@
+.nav{
+    background-color: #F5F2EA;
+    display: flex;
+    align-items:center;
+}
+
+.nav-link{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

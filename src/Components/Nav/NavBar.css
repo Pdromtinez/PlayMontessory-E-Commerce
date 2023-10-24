@@ -1,0 +1,33 @@
+*{
+    
+    margin: 0;
+    padding: 0;
+}
+
+.container-navbar .container{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.navbar-brand{
+    color: #D1434F;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-link{
+    color: #D1434F;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.navbar{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
