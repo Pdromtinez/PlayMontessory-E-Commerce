@@ -9,8 +9,8 @@ export const Product = db.define(
             defaultValue: DataTypes.UUIDV4,
             primaryKey: true,
         },
-        product_image: {
-            type: DataTypes.STRING,
+        image: {
+            type: DataTypes.JSON,
         },
         product_title:{
             type: DataTypes.STRING,

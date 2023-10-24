@@ -5,25 +5,31 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "server": "NODE_ENV=development nodemon ./Server/index.js",
+    "start": "NODE_ENV=production node ./Server/index.js",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest --verbose --silent --detectOpenHandles --config=jest.config.mjs",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview",
-    "server": "nodemon ./Server/index.js"
+    "preview": "vite preview"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
+    "cloudinary": "^1.41.0",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
-    "jest": "^29.7.0",
+    "express-fileupload": "^1.4.1",
+    "fs-extra": "^11.1.1",
     "jsonwebtoken": "^9.0.2",
-    "mysql2": "^3.6.1",
+    "mysql2": "^3.6.2",
     "react": "^18.2.0",
     "react-bootstrap": "^2.9.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.47.0",
     "react-router-dom": "^6.17.0",
     "sequelize": "^6.33.0",
-    "supertest": "^6.3.3"
+    "uuid": "^9.0.1",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
@@ -33,7 +39,9 @@
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
+    "jest": "^29.7.0",
     "nodemon": "^3.0.1",
+    "supertest": "^6.3.3",
     "vite": "^4.4.5"
   }
 }
