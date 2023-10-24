@@ -1,9 +1,9 @@
 import "./Footer.css";
 import Container from 'react-bootstrap/Container';
 import Image from 'react-bootstrap/Image';
-import facebookIcon from '../../assets/imgFooter/Facebook1.png';
-import instagramIcon from '../../assets/imgFooter/Instagram1.png';
-import tiktokIcon from '../../assets/imgFooter/TikTok1.png';
+import facebookIcon from '../../assets/imgFooter/facebook.png';
+import instagramIcon from '../../assets/imgFooter/instagram.png';
+import tiktokIcon from '../../assets/imgFooter/X.png';
 
 
 
