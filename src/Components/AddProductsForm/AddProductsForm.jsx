@@ -33,7 +33,8 @@ const AddProductForm = () => {
         product_description: data.product_description,
         product_brand: data.product_brand,
         product_price : parseFloat(data.product_price),
-        product_stock: parseInt(data.product_stock)
+        product_stock: parseInt(data.product_stock),
+        ageFilterId: data.ageFilterId
       
       }
       
@@ -90,14 +91,16 @@ const AddProductForm = () => {
             required
           />
           <Form.Label>Ages</Form.Label>
-          <Form.Select as={Col} md="8" aria-label="Default select example" required defaultValue="">
-              <option value="" disabled>Ages</option>
-              <option {...register("ages_filter")}>0-1</option>
-              <option {...register("ages_filter")}>1-2</option>
-              <option {...register("ages_filter")}>2-3</option>
-              <option {...register("ages_filter")}>3-4</option>
-              <option {...register("ages_filter")}>4-5</option>
+          <Form.Select as={Col} md="8" aria-label="Default select example" required defaultValue="" {...register("ageFilterId")}>
+            <option value="" disabled>Ages</option>
+            <option value="All">All</option>
+            <option value="0-1">0-1</option>
+            <option value="1-2">1-2</option>
+            <option value="2-3">2-3</option>
+            <option value="3-4">3-4</option>
+            <option value="4-5">4-5</option>
           </Form.Select>
+
           <Form.Label>Price</Form.Label>
           <Form.Control
             type="number"

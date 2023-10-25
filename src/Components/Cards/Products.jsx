@@ -5,9 +5,32 @@ import './Products.css'
 
 const Products = () => {
   const [products, setProducts] = useState([]);
+  const [selectedAge, setSelectedAge] = useState('All');
+  const [ageMapping, setAgeMapping] = useState({}); // Para almacenar la correspondencia de IDs a rangos de edades
 
   useEffect(() => {
-    fetch("http://localhost:6700/playmontessori/products")
+    // Realizar una solicitud al servidor para obtener la correspondencia de edades
+    fetch('http://localhost:6700/playmontessori/ages')
+      .then((response) => response.json())
+      .then((data) => {
+        // Crear un objeto de mapeo de IDs a rangos de edades
+        const ageMapping = {};
+        data.forEach((age) => {
+          ageMapping[age.id] = age.age_range;
+        });
+        setAgeMapping(ageMapping);
+      })
+      .catch((error) => {
+        console.error("Error al obtener la correspondencia de edades:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    const url = selectedAge === 'All'
+      ? 'http://localhost:6700/playmontessori/products/'
+      : `http://localhost:6700/playmontessori/ages/${selectedAge}/products/`;
+
+    fetch(url)
       .then((response) => response.json())
       .then((data) => {
         setProducts(data);
@@ -15,15 +38,14 @@ const Products = () => {
       .catch((error) => {
         console.error("Error al obtener los productos:", error);
       });
-  }, []);
-
+  }, [selectedAge]);
 
   const updateCount = (productId, newCount) => {
     const productToUpdate = products.find((product) => product.id === productId);
-  
+
     if (productToUpdate) {
       const updatedProduct = { ...productToUpdate, product_stock: newCount };
-  
+
       fetch(`http://localhost:6700/playmontessori/products/${productId}`, {
         method: "PUT",
         headers: {
@@ -44,23 +66,21 @@ const Products = () => {
     }
   };
 
-
   return (
     <Container>
-    <Dropdown>
-      <Dropdown.Toggle variant="success" id="dropdown-basic" className="buttonLogin">
-        Age Filter
-      </Dropdown.Toggle>
-
-      <Dropdown.Menu>
-        <Dropdown.Item href="#/action-1">All</Dropdown.Item>
-        <Dropdown.Item href="#/action-1">0-1</Dropdown.Item>
-        <Dropdown.Item href="#/action-2">1-2</Dropdown.Item>
-        <Dropdown.Item href="#/action-3">2-3</Dropdown.Item>
-        <Dropdown.Item href="#/action-3">3-4</Dropdown.Item>
-        <Dropdown.Item href="#/action-3">4-5</Dropdown.Item>
-      </Dropdown.Menu>
-    </Dropdown>
+      <Dropdown>
+        <Dropdown.Toggle variant="success" id="dropdown-basic" className="buttonLogin">
+          Age Filter
+        </Dropdown.Toggle>
+        <Dropdown.Menu>
+          <Dropdown.Item onClick={() => setSelectedAge('All')}>All</Dropdown.Item>
+          <Dropdown.Item onClick={() => setSelectedAge('0-1')}>0-1</Dropdown.Item>
+          <Dropdown.Item onClick={() => setSelectedAge('1-2')}>1-2</Dropdown.Item>
+          <Dropdown.Item onClick={() => setSelectedAge('2-3')}>2-3</Dropdown.Item>
+          <Dropdown.Item onClick={() => setSelectedAge('3-4')}>3-4</Dropdown.Item>
+          <Dropdown.Item onClick={() => setSelectedAge('4-5')}>4-5</Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
       <Row>
         {products.map((product) => (
           <Col key={product.id} xs={12} sm={6} md={4} lg={3}>
@@ -72,12 +92,12 @@ const Products = () => {
                   <Accordion.Item eventKey="0">
                     <Accordion.Header>Read More</Accordion.Header>
                     <Accordion.Body>
-                    <Card.Text className="brand">Brand: {product.product_brand}</Card.Text>
+                      <Card.Text className="brand">Brand: {product.product_brand}</Card.Text>
                       {product.product_description}
                     </Accordion.Body>
                   </Accordion.Item>
                 </Accordion>
-                <Card.Text className="age">Age: {product.ageFilterId}</Card.Text>
+                <Card.Text className="age">Age: {ageMapping[product.ageFilterId]}</Card.Text>
                 <Card.Text className="price">Price:  {product.product_price} €</Card.Text>
 
                 <BtnCart
