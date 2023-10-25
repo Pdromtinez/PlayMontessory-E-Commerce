@@ -3,7 +3,7 @@ import Root from "./root";
 
 import Register from "../pages/register/Register";
 import Products from "../Components/Cards/Products";
-import AddProductForm from "../Components/AddProductsForm";
+import AddProductForm from "../Components/AddProductsForm/AddProductsForm.jsx";
 import Login from "../pages/register/Login";
 
 
