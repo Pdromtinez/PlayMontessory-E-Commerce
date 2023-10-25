@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Card, Col, Container, Row, Accordion } from "react-bootstrap";
+import { Card, Col, Container, Row, Accordion, Dropdown } from "react-bootstrap";
 import BtnCart from "../Btn-cart/BtnCart";
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -46,7 +46,7 @@ const Products = () => {
   return (
     <Container>
     <Dropdown>
-      <Dropdown.Toggle variant="success" id="dropdown-basic">
+      <Dropdown.Toggle variant="success" id="dropdown-basic" className="buttonLogin">
         Age Filter
       </Dropdown.Toggle>
 
