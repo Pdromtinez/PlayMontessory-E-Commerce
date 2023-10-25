@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { Card, Col, Container, Row, Accordion } from "react-bootstrap";
-import ClickCounter from "../Counter/counter";
-import Dropdown from 'react-bootstrap/Dropdown';
-
+import BtnCart from "../Btn-cart/BtnCart";
 const Products = () => {
   const [products, setProducts] = useState([]);
 
@@ -33,9 +31,9 @@ const Products = () => {
       })
         .then((response) => {
           if (response.ok) {
-            console.log("Cantidad actualizada");
+            console.log("Compra");
           } else {
-            console.log("ERROR AL ACTUALIZAR");
+            console.log("ERROR ");
           }
         })
         .catch((error) => {
@@ -80,10 +78,10 @@ const Products = () => {
                 <Card.Text>Age: {product.ageFilterId}</Card.Text>
                 <Card.Text>Price: €{product.product_price}</Card.Text>
 
-                <ClickCounter
+                <BtnCart
                   initialCount={product.product_stock}
                   onUpdate={(newCount) => updateCount(product.id, newCount)}
-                  className="ClickCounter"
+                  className="BtnCart"
                 />
               </Card.Body>
             </Card>
