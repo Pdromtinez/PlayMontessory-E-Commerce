@@ -3,14 +3,6 @@ import { Form, Button, Col } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom"; // Importa useNavigate
 import './AddProductsForm.css'
-<<<<<<< HEAD:src/Components/AddProductsForm/AddProductsForm.jsx
-import { Link, useNavigate } from "react-router-dom"; // Importa useNavigate
-import './AddProductsForm.css'
-=======
-import { Link, useNavigate } from "react-router-dom"; 
->>>>>>> a860543e39a4be84ed164df3c1c83dca3ec50242:src/Components/AddProductsForm.jsx
-
-
 const AddProductForm = () => {
   const navigate = useNavigate();
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -55,12 +47,8 @@ const AddProductForm = () => {
     <div className="d-flex justify-content-center align-items-center formSubmit">
     <div>
       <h2 className="text-center mb-4 loginLabel">Add Product</h2>
-    <div className="d-flex justify-content-center align-items-center formSubmit">
-    <div>
-      <h2 className="text-center mb-4 loginLabel">Add Product</h2>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Form.Group controlId="product">
-          <Form.Label>Insert image</Form.Label>
           <Form.Label>Insert image</Form.Label>
           <Form.Control
             type="file"
@@ -69,13 +57,11 @@ const AddProductForm = () => {
             onChange={handleImageChange}
           />
           <Form.Label>Name</Form.Label>
-          <Form.Label>Name</Form.Label>
           <Form.Control
             type="text"
             {...register("product_title")}
             required
           />
-          <Form.Label>Description</Form.Label>
           <Form.Label>Description</Form.Label>
           <Form.Control
             type="text"
@@ -83,26 +69,22 @@ const AddProductForm = () => {
             required
           />
           <Form.Label>Brand</Form.Label>
-          <Form.Label>Brand</Form.Label>
           <Form.Control
             type="text"
             {...register("product_brand")}
             required
           />
           <Form.Label>Ages</Form.Label>
-          <Form.Label>Ages</Form.Label>
           <Form.Select as={Col} md="8" aria-label="Default select example" required defaultValue="">
               <option value="" disabled>Ages</option>
               <option {...register("ages_filter")}>0-1</option>
-          </Form.Select> 
-
+          </Form.Select>
           <Form.Label>Price</Form.Label>
           <Form.Control
             type="number"
             {...register("product_price")}
             required
           />
-          <Form.Label>Stock</Form.Label>
           <Form.Label>Stock</Form.Label>
           <Form.Control
             type="number"
@@ -113,12 +95,7 @@ const AddProductForm = () => {
         <div className="buttons">
         <Button className= 'buttonSubmit buttonLogin' variant="warning" type="submit"> {/* Cambio de color a naranja */}
           Add Product
-        <div className="buttons">
-        <Button className= 'buttonSubmit buttonLogin' variant="warning" type="submit"> {/* Cambio de color a naranja */}
-          Add Product
         </Button>
-        <Link to="/products" className=" btn btn-secondary ml-2 buttonSubmit buttonProducts">View Products</Link> {/* Botón secundario de Bootstrap */}
-        </div>
         <Link to="/products" className=" btn btn-secondary ml-2 buttonSubmit buttonProducts">View Products</Link> {/* Botón secundario de Bootstrap */}
         </div>
       </Form>
@@ -127,7 +104,6 @@ const AddProductForm = () => {
 );
 };
 export default AddProductForm;
-
 
 
 
