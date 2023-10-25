@@ -27,10 +27,6 @@ export const registerSchemas = z.object({
     .min(6, {
         message: "password must be at least 6 characters"
     }),
-    user_role: z
-    .string({
-        required_error: "role is required",
-    })
     
 })
 
@@ -40,7 +36,7 @@ export const loginSchemas = z.object({
 
     user_email: z
     .string({
-        required_error: "email is not valid",
+        required_error: "email is required",
     })
     .email({
         required_error: "invalid email",

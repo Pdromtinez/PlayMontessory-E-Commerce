@@ -17,22 +17,3 @@ try{
 
 main();
 
-//ESTRUCTURA DE USUARIOS Y PRODUCTOS
-/*{
-  "user_name": "",
-  "user_lastname": "",
-  "user_email": "",
-  "user_password": "",
-  "rolesId": ""
-} 
-
-{
-  "product_image": "",
-  "product_title": "",
-  "product_description": "",
-  "product_brand": "",
-  "product_price": "",
-  "product_stock": ""
-}
-
-*/

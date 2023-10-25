@@ -6,8 +6,6 @@ import { Roles } from "../models/roles.js";
 
 const saltRounds = 10;
 
-
-
 const  authController = {
 
 //user Register
