@@ -78,6 +78,10 @@ const AddProductForm = () => {
           <Form.Select as={Col} md="8" aria-label="Default select example" required defaultValue="">
               <option value="" disabled>Ages</option>
               <option {...register("ages_filter")}>0-1</option>
+              <option {...register("ages_filter")}>1-2</option>
+              <option {...register("ages_filter")}>2-3</option>
+              <option {...register("ages_filter")}>3-4</option>
+              <option {...register("ages_filter")}>4-5</option>
           </Form.Select>
           <Form.Label>Price</Form.Label>
           <Form.Control

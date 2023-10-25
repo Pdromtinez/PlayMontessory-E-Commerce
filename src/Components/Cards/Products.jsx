@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Card, Col, Container, Row, Accordion } from "react-bootstrap";
 import ClickCounter from "../Counter/counter";
+import Dropdown from 'react-bootstrap/Dropdown';
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -46,7 +47,20 @@ const Products = () => {
 
   return (
     <Container>
-      <h1 className="mt-4 mb-4">Products</h1>
+    <Dropdown>
+      <Dropdown.Toggle variant="success" id="dropdown-basic">
+        Age Filter
+      </Dropdown.Toggle>
+
+      <Dropdown.Menu>
+        <Dropdown.Item href="#/action-1">All</Dropdown.Item>
+        <Dropdown.Item href="#/action-1">0-1</Dropdown.Item>
+        <Dropdown.Item href="#/action-2">1-2</Dropdown.Item>
+        <Dropdown.Item href="#/action-3">2-3</Dropdown.Item>
+        <Dropdown.Item href="#/action-3">3-4</Dropdown.Item>
+        <Dropdown.Item href="#/action-3">4-5</Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
       <Row>
         {products.map((product) => (
           <Col key={product.id} xs={12} sm={6} md={4} lg={3}>
