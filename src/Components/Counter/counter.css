@@ -1,0 +1,21 @@
+.Counter{
+    display: flex;
+    gap: 10px;
+
+
+}
+.button{
+    border-radius: 5px;
+}
+.btn-counter{
+    border-radius: 5px;
+    background-color: #310058;
+    color: white;
+    font-weight: 500;
+    border: none;
+    width: 2.5rem;
+    height: 2.5rem;
+}
+span{
+    font-size: xx-large;
+}
