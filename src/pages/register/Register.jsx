@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import { registerSchemas } from '../../../Server/schemas/auth.schema';
 import { useNavigate } from 'react-router-dom';
 import ErrorMessages from '../../ErrorMessages/ErrorMessages';
-
+import "./Register.css";
 
 function Register() {
   const navigate = useNavigate();
@@ -60,63 +60,42 @@ function Register() {
   };
 
   return (
-    <div className="d-grid justify-content-center align-items-center">
-      <div className="d-grid justify-content-center">
-        <ErrorMessages errors={errors} />
-      </div>
-      <Form onSubmit={handleSubmit}>
-        <Form.Group className="mb-3" controlId="formBasicName">
-          <Form.Label>Name</Form.Label>
-          <Form.Control
-            type="text"
-            value={user_name}
-            onChange={(e) => setUserName(e.target.value)}
-            placeholder="Enter Name"
-          />
-        </Form.Group>
+    <Form onSubmit={handleSubmit} className='formSubmit'> 
+      <div className='labelForm'>Register</div>
+      <ErrorMessages errors={errors} />
+      <Form.Group className="mb-3" controlId="formBasicName">
+        <Form.Label> Name</Form.Label>
+        <Form.Control type="text" value={user_name} onChange={(e) => setUserName(e.target.value)} placeholder="Enter Name" />
+      </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicLastname">
-          <Form.Label>Lastname</Form.Label>
-          <Form.Control
-            type="text"
-            value={user_lastname}
-            onChange={(e) => setUserlastname(e.target.value)}
-            placeholder="Enter Lastname"
-          />
-        </Form.Group>
+      <Form.Group className="mb-3" controlId="formBasicLastname">
+        <Form.Label> Lastname</Form.Label>
+        <Form.Control type="text" value={user_lastname} onChange={(e) => setUserlastname(e.target.value)} placeholder="Enter Lastname" />
+      </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control
-            type="email"
-            value={user_email}
-            onChange={(e) => setUserEmail(e.target.value)}
-            placeholder="Enter email"
-          />
-          <Form.Text className="text-muted">
-            We`ll never share your email with anyone else.
-          </Form.Text>
-        </Form.Group>
+      <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Label>Email address</Form.Label>
+        <Form.Control type="email" value={user_email} onChange={(e) => setUserEmail(e.target.value)} placeholder="Enter email" />
+        <Form.Text className="text-muted">
+          We`ll never share your email with anyone else.
+        </Form.Text>
+      </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            type="password"
-            placeholder="Password"
-            value={user_password}
-            onChange={(e) => setUserPassword(e.target.value)}
-          />
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Accept terms and conditions" required />
-        </Form.Group>
-
-        <Button variant="primary" type="submit">
+      <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Label>Password</Form.Label>
+        <Form.Control type="password" placeholder="Password" value={user_password} onChange={(e) => setUserPassword(e.target.value)} />
+      </Form.Group>
+      
+      <Form.Group className="mb-3" controlId="formBasicCheckbox"> 
+        <Form.Check type="checkbox" label="Accept terms and conditions" required />
+      </Form.Group>
+      
+      <div className='buttonSubmit'>
+        <Button variant="primary" type="submit" className='buttonLogin'>
           Submit
         </Button>
-      </Form>
-    </div>
+      </div>
+    </Form>
   );
 }
 
