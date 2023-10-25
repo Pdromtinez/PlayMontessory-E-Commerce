@@ -64,7 +64,6 @@ function Login() {
             <Form.Label>E-mail:</Form.Label>
             <Form.Control
               type="email"
-              value={user_email}
               onChange={(e) => setEmail(e.target.value)}
             />
           </Form.Group>
@@ -72,7 +71,6 @@ function Login() {
             <Form.Label>Password:</Form.Label>
             <Form.Control
               type="password"
-              value={user_password}
               onChange={(e) => setPassword(e.target.value)}
             />
           </Form.Group>
