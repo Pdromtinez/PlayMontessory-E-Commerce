@@ -27,7 +27,7 @@ export const getUsers = async(_req, res) => {
           user_lastname,
           user_email,
           user_password: passwordHash,
-          userId //roles_id
+          userId
         });
 
       

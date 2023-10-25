@@ -1,8 +1,11 @@
+import { User } from "../models/Users.js";
 import { AgeFilter } from "../models/ageFilter.js";
 import { Product } from "../models/products.js";
 import { deleteImage, uploadImage } from "../utils/cloudinary.js";
-import fs from "fs-extra"
+
+import { verificarToken } from "../utils/jwtUtils.js";
 // Get
+
 
 export const getProducts = async(_req, res) => {
   try {
@@ -34,9 +37,7 @@ export const getProduct = async (req, res) => {
 
 export const createProducts = async (req, res) => {
   try {
-    const { product_title, product_description, product_brand, product_price, product_stock, ageFilterId, image } = req.body;
-
-    if (!product_title) return res.status(404).json({ message: 'product_title is required' });
+    const { product_title, product_description, product_brand, product_price, product_stock, ageFilterId, image, userId } = req.body;
 
     const newProduct = new Product({
       product_title,
@@ -44,8 +45,16 @@ export const createProducts = async (req, res) => {
       product_brand,
       product_price,
       product_stock,
-      
     });
+
+    if (!userId){
+      let token = req.cookies.token
+      const decodedToken = verificarToken(token);
+      newProduct.userId = decodedToken
+      let decodedUser = await User.findByPk(decodedToken)
+      console.log(decodedUser)
+    }
+
     if (ageFilterId){
       let rangeId = await AgeFilter.findOne({where:{ age_range: ageFilterId }})
       newProduct.ageFilterId = rangeId.id

@@ -1,17 +1,20 @@
-import { tokenSecret } from "../config.js";
+
 import { User } from "../models/Users.js";
-import jwt from "jsonwebtoken";
 import { Roles } from "../models/roles.js";
+import { verificarToken } from "../utils/jwtUtils.js";
 
 export const verifyToken = async (req,res,next) => {
     try {
-        const token = req.headers ["x-access-token"]
+        const token = req.cookies.token;
+
         if (!token){
             return res.status(403).json ({message:"invalid token"})
         }
-        const decodedToken = jwt.verify (token, tokenSecret);
+        const decodedToken = verificarToken(token)
         console.log(decodedToken)
-        req.userId = decodedToken.userId;
+
+        req.userId = decodedToken;
+
         const user = await User.findByPk (req.userId);
         if (!user){
             return res.status(404).json ({message:"user not found"})
@@ -24,13 +27,13 @@ export const verifyToken = async (req,res,next) => {
 
 export const isAdmin = async (req, res, next) => {
     try {
-        const token = req.headers["x-access-token"];
+        const token = req.cookies.token;
 
-        const decodedToken = jwt.verify(token, tokenSecret);
+        const decodedToken = verificarToken(token);
 
-        console.log(decodedToken.userId);
+        console.log(decodedToken);
 
-        req.userId = decodedToken.userId;
+        req.userId = decodedToken;
 
         const user = await User.findByPk(req.userId);
 

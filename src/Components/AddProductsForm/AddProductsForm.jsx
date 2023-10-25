@@ -4,18 +4,26 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom"; // Importa useNavigate
 import './AddProductsForm.css'
 const AddProductForm = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate(); 
+
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [imageUrl, setImageUrl] = useState('')
+
+
       const handleImageChange = (e) => {
       const imageFile = e.target.files[0];
       const reader = new FileReader();
+
     reader.onload = (event) => {
       const base64String = event.target.result.split(',')[1];
       setImageUrl(base64String);
     };
+
     reader.readAsDataURL(imageFile);
     };
+
+    
+    
     const onSubmit = async (data) => {
       try {
         console.log(imageUrl)
@@ -26,7 +34,9 @@ const AddProductForm = () => {
         product_brand: data.product_brand,
         product_price : parseFloat(data.product_price),
         product_stock: parseInt(data.product_stock)
+      
       }
+      
         const response = await fetch('http://localhost:6700/playmontessori/products', {
         method: 'POST',
         body: JSON.stringify(data),
@@ -34,16 +44,20 @@ const AddProductForm = () => {
           'Content-Type': 'application/json'
         }
       });
+
       if (response.ok) {
         console.log(data);
         alert('Product saved succesfully');
+        
       } else {
         console.error('Error al enviar los datos del producto:', response);
       }
+
 } catch (error) {
         console.error("Error al enviar los datos del producto:", data);
       }
-    }
+    } 
+
   return (
     <div className="d-flex justify-content-center align-items-center formSubmit">
     <div>

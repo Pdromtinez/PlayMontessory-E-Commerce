@@ -33,9 +33,11 @@ export const getAge = async (req, res) => {
 
 
 export const getProductsAge = async (req, res) => {
-  const {id} = req.params
+  const id = req.params.id
+  console.log(id)
   try {
-    const product = await Product.findAll({where:{ageFilterId: id}});
+    const ageId = await AgeFilter.findOne({where:{age_range: id }})
+    const product = await Product.findAll({where:{ageFilterId: ageId.id }});
     res.json(product);
   } catch (error) {
     {
