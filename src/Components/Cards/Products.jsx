@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Card, Col, Container, Row, Accordion, Dropdown } from "react-bootstrap";
 import BtnCart from "../Btn-cart/BtnCart";
+import './Products.css'
+
 const Products = () => {
   const [products, setProducts] = useState([]);
 
@@ -65,23 +67,23 @@ const Products = () => {
             <Card className="mb-4">
               <Card.Img src={product.image.secure_url} alt={product.image} />
               <Card.Body>
-                <Card.Title>{product.product_title}</Card.Title>
+                <Card.Title className="cardTitle">{product.product_title}</Card.Title>
                 <Accordion defaultActiveKey="0">
                   <Accordion.Item eventKey="0">
                     <Accordion.Header>Read More</Accordion.Header>
                     <Accordion.Body>
+                    <Card.Text className="brand">Brand: {product.product_brand}</Card.Text>
                       {product.product_description}
                     </Accordion.Body>
                   </Accordion.Item>
                 </Accordion>
-                <Card.Text>Brand: {product.product_brand}</Card.Text>
-                <Card.Text>Age: {product.ageFilterId}</Card.Text>
-                <Card.Text>Price: €{product.product_price}</Card.Text>
+                <Card.Text className="age">Age: {product.ageFilterId}</Card.Text>
+                <Card.Text className="price">Price:  {product.product_price} €</Card.Text>
 
                 <BtnCart
                   initialCount={product.product_stock}
                   onUpdate={(newCount) => updateCount(product.id, newCount)}
-                  className="BtnCart"
+                  className="BtnCart addBtn"
                 />
               </Card.Body>
             </Card>
