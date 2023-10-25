@@ -31,10 +31,9 @@ export const getProduct = async (req, res) => {
 
 // Post
 
-
 export const createProducts = async (req, res) => {
   try {
-    const { product_title, product_description, product_brand, product_price, product_stock } = req.body;
+    const { product_title, product_description, product_brand, product_price, product_stock, image } = req.body;
 
     if (!product_title) return res.status(404).json({ message: 'product_title is required' });
 
@@ -46,22 +45,18 @@ export const createProducts = async (req, res) => {
       product_stock
     });
 
-    if (req.files?.image) {
-      const result = await uploadImage(req.files.image.tempFilePath);
+    if (image) {
+      const result = await uploadImage(`data:image/jpeg;base64,${image}`);
       newProduct.image = {
         public_id: result.public_id,
         secure_url: result.secure_url,
       };
-      await fs.unlink(req.files.image.tempFilePath);
     }
 
     await newProduct.save();
 
     res.json({ message: "You have created a new product" });
   } catch (error) {
-    if (req.files?.image) {
-      await fs.unlink(req.files.image.tempFilePath);
-    }
     res.status(500).json({ message: error.message });
   }
 };
