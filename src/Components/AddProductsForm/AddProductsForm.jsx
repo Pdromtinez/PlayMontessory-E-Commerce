@@ -35,7 +35,8 @@ const AddProductForm = () => {
         }
       });
       if (response.ok) {
-        console.log(data)
+        console.log(data);
+        alert('Product saved succesfully');
       } else {
         console.error('Error al enviar los datos del producto:', response);
       }

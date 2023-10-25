@@ -1,5 +1,6 @@
 .Counter {
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
   position: relative;
 }
 
@@ -18,7 +19,7 @@
 }
 
 .stock-product{
- font-size: 2em;
+ font-size: 1em;
 }
 
 .Counter.animate button {

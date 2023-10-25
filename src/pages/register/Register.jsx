@@ -42,6 +42,7 @@ function Register() {
       });
 
       if (response.ok) {
+        alert('User created successfully');
         navigate('/login');
       } 
     } catch (error) {
@@ -94,6 +95,7 @@ function Register() {
         <Button variant="primary" type="submit" className='buttonLogin'>
           Submit
         </Button>
+    
       </div>
     </Form>
   );

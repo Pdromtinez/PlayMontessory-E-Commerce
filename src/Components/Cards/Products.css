@@ -6,17 +6,18 @@
 
 .brand {
     margin-bottom: 5rem;
-    font-size: 1.5rem;
+    font-size: 1rem;
 }
 
 .age{
-    font-size: 1.5rem;
+    font-size: 1rem;
 }
 
 .price{
-    font-size: 2.5rem;
+    font-size: 1.3rem;
 }
 
 .addBtn{
     margin-right: 3rem;
+    font-size: 1rem;
 }
