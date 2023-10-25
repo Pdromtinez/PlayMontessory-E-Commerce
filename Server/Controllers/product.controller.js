@@ -1,3 +1,4 @@
+import { AgeFilter } from "../models/ageFilter.js";
 import { Product } from "../models/products.js";
 import { deleteImage, uploadImage } from "../utils/cloudinary.js";
 import fs from "fs-extra"
@@ -33,7 +34,7 @@ export const getProduct = async (req, res) => {
 
 export const createProducts = async (req, res) => {
   try {
-    const { product_title, product_description, product_brand, product_price, product_stock, image } = req.body;
+    const { product_title, product_description, product_brand, product_price, product_stock, ageFilterId, image } = req.body;
 
     if (!product_title) return res.status(404).json({ message: 'product_title is required' });
 
@@ -42,8 +43,13 @@ export const createProducts = async (req, res) => {
       product_description,
       product_brand,
       product_price,
-      product_stock
+      product_stock,
+      
     });
+    if (ageFilterId){
+      let rangeId = await AgeFilter.findOne({where:{ age_range: ageFilterId }})
+      newProduct.ageFilterId = rangeId.id
+    }
 
     if (image) {
       const result = await uploadImage(`data:image/jpeg;base64,${image}`);

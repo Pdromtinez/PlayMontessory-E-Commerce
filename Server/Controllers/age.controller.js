@@ -35,7 +35,7 @@ export const getAge = async (req, res) => {
 export const getProductsAge = async (req, res) => {
   const {id} = req.params
   try {
-    const product = await Product.findAll({where:{AgeFilterId: id}});
+    const product = await Product.findAll({where:{ageFilterId: id}});
     res.json(product);
   } catch (error) {
     {
@@ -88,7 +88,7 @@ export const updateAge = async(req , res) => {
 export const deleteAge = async (req, res) => {
   const { id } = req.params;
   try {
-    await Product.destroy({ where: { AgeFilterId: id } });
+    await Product.destroy({ where: { ageFilterId: id } });
     await AgeFilter.destroy({ where: { id } });
 
     res.sendStatus(204);

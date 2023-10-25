@@ -65,17 +65,17 @@ function Register() {
       <ErrorMessages errors={errors} />
       <Form.Group className="mb-3" controlId="formBasicName">
         <Form.Label> Name</Form.Label>
-        <Form.Control type="text" value={user_name} onChange={(e) => setUserName(e.target.value)} placeholder="Enter Name" />
+        <Form.Control type="text"  onChange={(e) => setUserName(e.target.value)} placeholder="Enter Name" />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicLastname">
         <Form.Label> Lastname</Form.Label>
-        <Form.Control type="text" value={user_lastname} onChange={(e) => setUserlastname(e.target.value)} placeholder="Enter Lastname" />
+        <Form.Control type="text"  onChange={(e) => setUserlastname(e.target.value)} placeholder="Enter Lastname" />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" value={user_email} onChange={(e) => setUserEmail(e.target.value)} placeholder="Enter email" />
+        <Form.Control type="email"  onChange={(e) => setUserEmail(e.target.value)} placeholder="Enter email" />
         <Form.Text className="text-muted">
           We`ll never share your email with anyone else.
         </Form.Text>
@@ -83,7 +83,7 @@ function Register() {
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Password</Form.Label>
-        <Form.Control type="password" placeholder="Password" value={user_password} onChange={(e) => setUserPassword(e.target.value)} />
+        <Form.Control type="password" placeholder="Password"  onChange={(e) => setUserPassword(e.target.value)} />
       </Form.Group>
       
       <Form.Group className="mb-3" controlId="formBasicCheckbox"> 

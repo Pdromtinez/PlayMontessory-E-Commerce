@@ -7,7 +7,7 @@ import { isAdmin, verifyToken } from "../middleware/validatorToken.js";
 const router = Router();
 
 router.post("/",createAges);
-router.get("/", verifyToken, isAdmin, getAges);
+router.get("/", getAges);
 router.get("/:id/products", getProductsAge);
 router.get("/:id",getAge);
 router.put("/:id",updateAge);
