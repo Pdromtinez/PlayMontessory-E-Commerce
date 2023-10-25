@@ -35,10 +35,10 @@ function BtnCart({ initialCount, onUpdate }) {
 
   return (
     <div className={`Counter ${animation ? 'animate' : ''}`}>
+      <span className='stock-product'>Stock: {count}</span>
       <button className="buttonLogin" onClick={() => handleButtonClick('decrement')}>
         Add to cart
       </button>
-      <span>{count}</span>
       {showAlert && <div className="alert">Product added to cart</div>}
     </div>
   );
