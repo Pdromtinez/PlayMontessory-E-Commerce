@@ -1,11 +1,12 @@
 import { Router } from "express";
 import { createProducts, deleteProduct, getProduct, getProducts, updateProduct } from "../Controllers/product.controller.js";
 import fileUpload from "express-fileupload";
-
+import { validateSchema } from "../middleware/validator.middleware.js";
+import { productCreateSchemas } from "../schemas/product.schema.js";
 
 const router = Router();
 
-router.post("/", fileUpload({ useTempFiles : true, tempFileDir : './uploads/'
+router.post("/",validateSchema(productCreateSchemas), fileUpload({ useTempFiles : true, tempFileDir : './uploads/'
 }),createProducts);
 
 router.get("/", getProducts);
