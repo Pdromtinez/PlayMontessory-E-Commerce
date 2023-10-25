@@ -1,14 +1,13 @@
 import { useState } from "react";
 import { Form, Button, Col } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom"; // Importa useNavigate
+import { Link, useNavigate } from "react-router-dom"; 
 
 
 const AddProductForm = () => {
-  const navigate = useNavigate(); // Obtiene la función de navegación
+  const navigate = useNavigate(); 
 
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const [imageData, setImageData] = useState('');
     const [imageUrl, setImageUrl] = useState('')
 
 
