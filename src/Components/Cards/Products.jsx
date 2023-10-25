@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Card, Col, Container, Row, Accordion } from "react-bootstrap";
+import ClickCounter from "../Counter/counter";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -14,6 +15,34 @@ const Products = () => {
         console.error("Error al obtener los productos:", error);
       });
   }, []);
+
+
+  const updateCount = (productId, newCount) => {
+    const productToUpdate = products.find((product) => product.id === productId);
+  
+    if (productToUpdate) {
+      const updatedProduct = { ...productToUpdate, product_stock: newCount };
+  
+      fetch(`http://localhost:6700/playmontessori/products/${productId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedProduct),
+      })
+        .then((response) => {
+          if (response.ok) {
+            console.log("Cantidad actualizada");
+          } else {
+            console.log("ERROR AL ACTUALIZAR");
+          }
+        })
+        .catch((error) => {
+          console.log("ERROR EN LA SOLICITUD", error);
+        });
+    }
+  };
+
 
   return (
     <Container>
@@ -36,7 +65,12 @@ const Products = () => {
                 <Card.Text>Brand: {product.product_brand}</Card.Text>
                 <Card.Text>Age: {product.ageFilterId}</Card.Text>
                 <Card.Text>Price: €{product.product_price}</Card.Text>
-                <Card.Text>Stock: {product.product_stock}</Card.Text>
+
+                <ClickCounter
+                  initialCount={product.product_stock}
+                  onUpdate={(newCount) => updateCount(product.id, newCount)}
+                  className="ClickCounter"
+                />
               </Card.Body>
             </Card>
           </Col>
