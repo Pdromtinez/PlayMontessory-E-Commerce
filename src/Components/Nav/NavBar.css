@@ -10,6 +10,9 @@
 a{
     color: #D1434F;
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    
 }
 
 .container-navbar .container{

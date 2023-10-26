@@ -17,7 +17,7 @@ function NavBar() {
               width="80"
               height="80"
               className="d-inline-block align-top"
-            /></Link>PlayMontessori</Navbar.Brand>
+            />PlayMontessori</Link></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
 
