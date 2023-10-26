@@ -53,7 +53,8 @@ Login: async (req, res) => {
         }
 
     const token = generarToken(user.id);
-
+        
+    res.cookie('token', token, { httpOnly: true });
 
     return res.status(200).json(token);
     
