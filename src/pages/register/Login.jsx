@@ -95,7 +95,7 @@ function Login() {
         ariaHideApp={false}
         className="login-modal"
       >
-        <h2 className='login-sucess'>login Successful</h2>
+        <h2 className='login-sucess'>login Successfully</h2>
       </ReactModal>
       </div>
     </>
