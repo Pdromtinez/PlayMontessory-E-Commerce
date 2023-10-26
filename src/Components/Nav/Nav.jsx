@@ -9,7 +9,7 @@ return (
         <Nav.Link><Link to= "/products">Products</Link></Nav.Link>
       </Nav.Item>
       <Nav.Item as="li">
-        <Nav.Link eventKey="link-2">About Us</Nav.Link>
+        <Nav.Link eventKey="link-3"><Link to="/aboutus">About Us</Link></Nav.Link>
       </Nav.Item>
       <Nav.Item as="li">
         <Nav.Link eventKey="link-2"><Link to="/login">Login</Link></Nav.Link>
