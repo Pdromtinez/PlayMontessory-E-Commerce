@@ -3,17 +3,16 @@ import { createProducts, deleteProduct, getProduct, getProducts, updateProduct }
 import fileUpload from "express-fileupload";
 import { validateSchema } from "../middleware/validator.middleware.js";
 import { productCreateSchemas } from "../schemas/product.schema.js";
-
+import { isAdmin, verifyToken } from "../middleware/validatorToken.js";
 const router = Router();
 
 router.post("/",validateSchema(productCreateSchemas), fileUpload({ useTempFiles : true, tempFileDir : './uploads/'
-}),createProducts);
+}), verifyToken, isAdmin, createProducts);
 
 router.get("/", getProducts);
-router.get("/:id/products");
-router.get("/:id",getProduct);
-router.put("/:id",updateProduct);
-router.delete("/:id",deleteProduct);
+router.get("/:id", getProduct);
+router.put("/:id",  updateProduct);
+router.delete("/:id",verifyToken, isAdmin, deleteProduct);
 
 
 
