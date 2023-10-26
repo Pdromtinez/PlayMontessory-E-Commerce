@@ -118,7 +118,7 @@ const AddProductForm = () => {
         <Button className= 'buttonSubmit buttonLogin' variant="warning" type="submit"> {/* Cambio de color a naranja */}
           Add Product
         </Button>
-        <Link to="/products" className=" btn btn-secondary ml-2 buttonSubmit buttonProducts">View Products</Link> {/* Botón secundario de Bootstrap */}
+        <Link to="/" className=" btn btn-secondary ml-2 buttonSubmit buttonProducts">View Products</Link> {/* Botón secundario de Bootstrap */}
         </div>
       </Form>
     </div>
