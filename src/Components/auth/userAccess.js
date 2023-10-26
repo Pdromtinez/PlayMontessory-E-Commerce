@@ -1,3 +1,4 @@
+
 export default async function isUserAdmin() {
     try {
         const cookieString = document.cookie;
@@ -11,16 +12,17 @@ export default async function isUserAdmin() {
         });
         const data = await response.json();
 
+        const user = data.userRole
 
-        if (response) {
-            const user = data.userRole;
-            return user === "admin";
-        } else {
-            console.error(data);
-            return false;
+        
+        if (user === "admin"){return true}
+        else{
+            return false
         }
+
     } catch (error) {
         console.error(error);
         return false;
     }
 }
+

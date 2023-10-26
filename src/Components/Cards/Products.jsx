@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import { Card, Col, Container, Row, Accordion, Dropdown } from "react-bootstrap";
 import BtnCart from "../Btn-cart/BtnCart";
 import './Products.css'
+import isUserAdmin from "../auth/userAccess";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
   const [selectedAge, setSelectedAge] = useState('All');
-  const [ageMapping, setAgeMapping] = useState({}); // Para almacenar la correspondencia de IDs a rangos de edades
-
+  const [ageMapping, setAgeMapping] = useState({}); 
+  // Para almacenar la correspondencia de IDs a rangos de edades
+  
   useEffect(() => {
     // Realizar una solicitud al servidor para obtener la correspondencia de edades
     fetch('http://localhost:6700/playmontessori/ages')
@@ -42,6 +44,8 @@ const Products = () => {
 
   const updateCount = (productId, newCount) => {
     const productToUpdate = products.find((product) => product.id === productId);
+
+    
 
     if (productToUpdate) {
       const updatedProduct = { ...productToUpdate, product_stock: newCount };
@@ -110,7 +114,9 @@ const Products = () => {
           </Col>
         ))}
       </Row>
+      <button onClick={ async (e) => {console.log(await isUserAdmin())}}>hola</button>
     </Container>
+   
   );
 };
 
