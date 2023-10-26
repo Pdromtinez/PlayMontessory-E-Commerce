@@ -6,6 +6,7 @@ import AddProductForm from "../Components/AddProductsForm/AddProductsForm";
 import Login from "../pages/register/Login";
 import isUserAdmin  from "../Components/auth/userAccess.js";
 import NoAccessPage from "../Components/auth/NoAccess";
+import MiComponente from "../Components/auth/newComponent";
 
 const router = createBrowserRouter ([
     {
@@ -22,11 +23,11 @@ const router = createBrowserRouter ([
             },
             {
                 path:"/products",
-                element: <Products/>
+                element: <MiComponente/>
             },
             {
                 path: "/add-products",
-                element: isUserAdmin() ? <NoAccessPage />  : <AddProductForm /> ,
+                element:  <AddProductForm/>,
               },
         ]
     }
