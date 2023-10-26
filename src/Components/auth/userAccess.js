@@ -12,7 +12,7 @@ export default async function isUserAdmin() {
         });
         const data = await response.json();
 
-        const user = data.userRole
+        const user = data.userRoles
 
         
         if (user === "admin"){return true}
