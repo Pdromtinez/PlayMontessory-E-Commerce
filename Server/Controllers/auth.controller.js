@@ -26,9 +26,7 @@ const authController = {
             user_password: hashedPassword
         });
 
-        if (rolesId) {
-            newUser.rolesId = rolesId;
-        } else {
+        if (!rolesId) {
             let clienteRole = await Roles.findOne({ where: { user_role: "user" } });
             newUser.rolesId = clienteRole.id;
     }
@@ -56,7 +54,6 @@ Login: async (req, res) => {
 
     const token = generarToken(user.id);
 
-    res.cookie('token', token, { httpOnly: true, maxAge: 3600000 });
 
     return res.status(200).json(token);
     

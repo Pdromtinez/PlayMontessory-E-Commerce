@@ -2,21 +2,42 @@
 import { User } from "../models/Users.js";
 import bcrypt from "bcrypt"
 import { Product } from "../models/products.js";
+import { Roles } from "../models/roles.js";
+import { verificarToken } from "../utils/jwtUtils.js";
 
-export const getUsers = async(_req, res) => {
-    try {
-      const Users = await User.findAll({
-        atributes: ["id", "user_name", "user_lastname", "user_email", "user_password", "userId"],
+
+export const getUsers = async (req, res) => {
+  try {
+    let userRole = null; // Inicializar userRole en null
+
+    if (req.headers.authorization){
+      const token = req.headers.authorization;
+
+      const decodedToken = verificarToken(token);
+      const userId = decodedToken;
+      console.log(decodedToken)
+      const user = await User.findOne({
+        attributes: ["id", "user_name", "user_lastname", "user_email", "user_password",  "rolesId"],
+        where: { id: userId },
+        include: [{ model: Roles, attributes: ['user_role'], as: "role" }]
       });
-      res.json(Users);
-    } catch (error) {
-      res.status(500).json({
-        message: error.message,
-      });
+
+      
+        userRole = user.role.user_role;
     }
-}
+    
+    const users = await User.findAll({
+      attributes: ["id", "user_name", "user_lastname", "user_email", "user_password", "rolesId"],
+    });
 
-   export const createUser = async (req, res) => {
+    res.json({ users, userRole });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+
+export const createUser = async (req, res) => {
     const { user_name, user_lastname, user_email, user_password, userId } = req.body;
 
     const passwordHash = await bcrypt.hash(user_password, 10)

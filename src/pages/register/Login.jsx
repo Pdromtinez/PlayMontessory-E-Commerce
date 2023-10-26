@@ -33,7 +33,10 @@ function Login() {
       });
 
       if (response.ok) {
-        navigate('/products');
+        const token = await response.json();
+        document.cookie = `token= ${token}; path=/`;
+        console.log(document.cookie)
+        
       } 
       if (response.status === 401) {
           setIncorrectPassword('Incorrect password');
