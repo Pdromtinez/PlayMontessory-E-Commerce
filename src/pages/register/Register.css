@@ -1,0 +1,42 @@
+.form-label{
+color: #D1434F;
+
+}
+
+.formSubmit{
+    margin-right:30%;
+    margin-left: 30%;
+    margin-top: 5%;
+    border: 1px solid #000000;
+    padding: 1rem;
+    border-radius: 5px;
+
+}
+.buttonSubmit{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.labelForm{
+    color: #D1434F;
+    margin: 5%;
+    display: flex;
+    justify-content: center;
+    font-size: 2.5rem;
+}
+.register-modal {
+    position: relative;
+    margin: auto;
+    top: 1rem;
+    width: 12rem;
+    height: 5.5rem;
+    padding: 1rem;
+    border: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    background-color: #F5F2EA;
+    text-align: center;
+  }
+  .sucess {
+    color: #D1434F;
+    font-size: 1.4em;
+  }

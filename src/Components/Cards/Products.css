@@ -1,0 +1,28 @@
+.cardTitle{
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.brand {
+    margin-bottom: 5rem;
+    font-size: 1rem;
+}
+
+.age{
+    font-size: 1rem;
+}
+
+.price{
+    font-size: 1.3rem;
+}
+
+.addBtn{
+    margin-right: 3rem;
+    font-size: 1rem;
+}
+
+.rowcard{
+    display: flex;
+    width: 100%;
+}

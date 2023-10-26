@@ -1,0 +1,34 @@
+
+.list-footer{
+    list-style: none; 
+}
+.list-text-footer a{
+    text-decoration: none;
+}
+.end-footer {
+    
+    margin-top: 0%;
+    padding: 0%;
+}
+
+h6{
+    color: #D1434F;
+}
+.social-icons{
+    list-style: none;
+    background-color: #F5F2EA;
+    display: flex;
+    align-items: baseline;
+    text-decoration: none;
+    margin-top: 4rem;
+}
+
+.div.container-footer.container {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.div-footer {
+    width: 100%;
+}

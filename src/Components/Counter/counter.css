@@ -1,0 +1,23 @@
+.Counters {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  padding: 0;
+}
+
+.Counters button {
+  padding: 0;
+  width: 3rem;
+  height: 3rem;
+  font-size: 2rem;
+}
+
+.button {
+  justify-content: space-between;
+  padding: 0;
+}
+
+span {
+  font-size: xx-large;
+}
