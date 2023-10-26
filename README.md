@@ -109,6 +109,10 @@ We welcome your contributions to help grow this project! If you want to contribu
 3. Make your changes and ensure the tests pass.
 4. Submit a pull request for us to review your changes.
 
+## Links 
+[Figma](https://www.figma.com/file/VmimeBu8CZACazyquqyjUe/Full-Stack-E-commerce?type=design&node-id=123%3A370&mode=design&t=GtOrBe5AyulAjEF7-1)
+[Hosting](https://play-montessory-e-commerce-git-main-pdromtinezs-projects.vercel.app/)
+
 ## Authors
 
 - [@Pedro Martínez](https://github.com/Pdromtinez)
