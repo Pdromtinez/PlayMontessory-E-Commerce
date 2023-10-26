@@ -81,7 +81,7 @@ const Products = () => {
           <Dropdown.Item onClick={() => setSelectedAge('4-5')}>4-5</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
-      <Row>
+      <Row className="rowcard">
         {products.map((product) => (
           <Col key={product.id} xs={12} sm={6} md={4} lg={3}>
             <Card className="mb-4">
