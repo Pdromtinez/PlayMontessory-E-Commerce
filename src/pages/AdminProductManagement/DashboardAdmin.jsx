@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Card, Col, Container, Row, Accordion, Dropdown, Button } from "react-bootstrap";
 import ClickCounter from "../../Components/Counter/counter";
+import { Link } from "react-router-dom";
 import './DashboardAdmin.css'
 
 function DashboardAdmin() {
@@ -94,6 +95,7 @@ const updateCount = (productId, newCount) => {
 
     return (
         <Container>
+          <Link to= "/add-products"><button>Add product</button></Link>
           <Dropdown>
             <Dropdown.Toggle variant="success" id="dropdown-basic" className="buttonLogin">
               Age Filter

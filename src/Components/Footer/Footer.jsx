@@ -20,6 +20,7 @@ function Footer () {
                     <li><Link to="http://www.twitter.com" target="_blank"><Image width ="20" src={Twitter} alt="X" className="social-icon"/></Link></li>
                 </ul>
                 <ul className="end-footer p-2 d-flex justify-content-center text-primary">
+                    <Link to= "/admin/products">Admin</Link>
                     <h6>© 2023 PlayMontessori. All rights reserved.</h6>
                 </ul>
             </div>
