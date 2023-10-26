@@ -85,7 +85,7 @@ const Products = () => {
         {products.map((product) => (
           <Col key={product.id} xs={12} sm={6} md={4} lg={3}>
             <Card className="mb-4">
-              <Card.Img src={product.image.secure_url} alt={product.image} />
+              <Card.Img src={product.image.secure_url} alt={product.image} width="300" height="300"/>
               <Card.Body>
                 <Card.Title className="cardTitle">{product.product_title}</Card.Title>
                 <Accordion defaultActiveKey="0">
