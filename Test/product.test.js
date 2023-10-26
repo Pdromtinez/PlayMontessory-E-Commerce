@@ -43,7 +43,7 @@ describe("Test de CRUD products", () => {
 
         test('should return a message Shoe created successfully', async () => {
             const response = await request(app).post('/playmontessori/products').send(newToy)
-            expect(response.body.message).toContain("You has create a new product")
+            expect(response.body.message).toContain("You have created a new product")
         })
 
     })

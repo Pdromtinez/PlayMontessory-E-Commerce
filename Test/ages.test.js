@@ -3,9 +3,9 @@ import { app } from '../Server/app.js';
 import { test, expect, describe, beforeAll, afterAll } from "@jest/globals";
 import { AgeFilter } from '../Server/models/ageFilter.js';
 
-test('authorization denied', async () => {
+test('get', async () => {
   const response = await request(app).get('/playmontessori/ages');
-  expect(response.status).toBe(403);
+  expect(response.status).toBe(200);
 });
 
 describe("Test de CRUD ages", () => {
