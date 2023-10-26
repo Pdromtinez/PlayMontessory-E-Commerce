@@ -4,6 +4,7 @@ import Register from "../pages/register/Register";
 import Products from "../Components/Cards/Products";
 import AddProductForm from "../Components/AddProductsForm/AddProductsForm";
 import Login from "../pages/register/Login";
+import AboutUs from "../pages/AboutUs/AboutUs";
 const router = createBrowserRouter ([
     {
         path:"/",
@@ -23,8 +24,12 @@ const router = createBrowserRouter ([
             },
             {
                 path: "/add-products",
-                element: <AddProductForm />,
-              },
+                element: <AddProductForm/>,
+            },
+            {
+                path: "/aboutus",
+                element: <AboutUs/>,
+            },
         ]
     }
 ])
