@@ -63,6 +63,13 @@
     display: flex;
     flex-direction: column;
 }
+
+.add {
+  margin-top: 2rem;
+  font-size: 2rem;
+  text-decoration:underline;
+}
+
 @media (max-width: 768px) {
     /* Estilos para pantallas más pequeñas */
     .loginLabel {

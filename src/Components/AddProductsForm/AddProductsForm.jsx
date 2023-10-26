@@ -63,7 +63,7 @@ const AddProductForm = () => {
   return (
     <div className="d-flex justify-content-center align-items-center formSubmit">
     <div>
-      <h2 className="text-center mb-4 loginLabel">Add Product</h2>
+      <h2 id="add" className="text-center mb-4 loginLabel add">Add Product</h2>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Form.Group controlId="product">
           <Form.Label>Insert image</Form.Label>

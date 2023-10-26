@@ -95,7 +95,8 @@ const updateCount = (productId, newCount) => {
 
     return (
         <Container>
-          <Link to= "/add-products"><button>Add product</button></Link>
+          <a className="add" href="#add">Click to add product</a>
+
           <Dropdown>
             <Dropdown.Toggle variant="success" id="dropdown-basic" className="buttonLogin">
               Age Filter
