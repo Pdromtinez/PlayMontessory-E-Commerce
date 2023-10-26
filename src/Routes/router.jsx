@@ -5,6 +5,8 @@ import Products from "../Components/Cards/Products";
 import AddProductForm from "../Components/AddProductsForm/AddProductsForm";
 import Login from "../pages/register/Login";
 import AboutUs from "../pages/AboutUs/AboutUs";
+import DashboardAdmin from "../pages/AdminProductManagement/DashboardAdmin";
+
 const router = createBrowserRouter ([
     {
         path:"/",
@@ -29,6 +31,10 @@ const router = createBrowserRouter ([
             {
                 path: "/aboutus",
                 element: <AboutUs/>,
+            },
+            {
+                path: "/admin/products",
+                element: <DashboardAdmin/>,
             },
         ]
     }
