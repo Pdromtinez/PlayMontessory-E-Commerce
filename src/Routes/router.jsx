@@ -2,11 +2,12 @@ import { createBrowserRouter } from "react-router-dom";
 import Root from "./root";
 import Register from "../pages/register/Register";
 import Products from "../Components/Cards/Products";
-import AddProductForm from "../Components/AddProductsForm/AddProductsForm";
+import DashboardAdmin from "../pages/AdminProductManagement/DashboardAdmin";
 import Login from "../pages/register/Login";
-import isUserAdmin  from "../Components/auth/userAccess.js";
-import NoAccessPage from "../Components/auth/NoAccess";
-import MiComponente from "../Components/auth/newComponent";
+import AboutUs from "../pages/AboutUs/AboutUs";
+import AddProductForm from "../Components/AddProductsForm/AddProductsForm"
+import MiComponente from "../Components/auth/authComponent";
+
 
 const router = createBrowserRouter ([
     {
@@ -22,13 +23,21 @@ const router = createBrowserRouter ([
                 element: <Login/>
             },
             {
-                path:"/products",
-                element: <MiComponente/>
+                path:"/",
+                element: <Products/>
             },
             {
                 path: "/add-products",
-                element:  <AddProductForm/>,
-              },
+                element: <MiComponente/>,
+            },
+            {
+                path: "/aboutus",
+                element: <AboutUs/>,
+            },
+            {
+                path: "/admin/products",
+                element: <MiComponente/>,
+            },
         ]
     }
 ])//Pedrom23@gmail.com

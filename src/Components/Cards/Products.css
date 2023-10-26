@@ -21,3 +21,8 @@
     margin-right: 3rem;
     font-size: 1rem;
 }
+
+.rowcard{
+    display: flex;
+    width: 100%;
+}

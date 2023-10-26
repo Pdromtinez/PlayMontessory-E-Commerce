@@ -1,12 +1,12 @@
 import React from 'react';
-
+import "./NoAccess.css"
 const NoAccessPage = () => {
   return (
     <div style={{ textAlign: 'center', padding: '20px' }}>
-      <h2>Acceso Restringido</h2>
-      <p>Lo siento, no tienes permiso para acceder a esta página.</p>
+      <h2>Restricted Access</h2>
+      <p>Sorry, you don't have permission to accesses this page.</p>
       {/* Puedes agregar un enlace de regreso a la página de inicio u otra página */}
-      <a href="/">Volver a la página de inicio</a>
+      <a className="returnHome" href="/">Return to Home page</a>
     </div>
   );
 };

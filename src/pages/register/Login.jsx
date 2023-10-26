@@ -1,15 +1,14 @@
-import { useState, useEffect} from 'react';
+import { useState} from 'react';
 import { Form, Button } from 'react-bootstrap';
 import "./login.css";
 import { Link } from 'react-router-dom';
 import { loginSchemas } from '../../../Server/schemas/auth.schema';
 import { useNavigate } from 'react-router-dom';
 import ErrorMessages from '../../ErrorMessages/ErrorMessages';
-
-
+import ReactModal from 'react-modal';
 function Login() {
   const navigate = useNavigate();
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [user_email, setEmail] = useState();
   const [user_password, setPassword] = useState();
   const [errors, setErrors] = useState({
@@ -19,11 +18,8 @@ function Login() {
   const [incorrectPassword, setIncorrectPassword] = useState('');
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       loginSchemas.parse({ user_email, user_password });
-
-     
       const response = await fetch('http://localhost:6700/playmontessori/login', {
         method: 'POST',
         headers: {
@@ -31,18 +27,21 @@ function Login() {
         },
         body: JSON.stringify({ user_email, user_password }),
       });
-
       if (response.ok) {
         const token = await response.json();
         document.cookie = `token= ${token}; path=/`;
         console.log(document.cookie)
         
       } 
+        setIsModalOpen(true);
+        setTimeout(() => {
+          setIsModalOpen(false);
+          navigate('/');
+        }, 3000);
+      
       if (response.status === 401) {
           setIncorrectPassword('Incorrect password');
         }
-      
-      
     } catch (error) {
       if (error.issues) {
         const newErrors = {
@@ -55,14 +54,12 @@ function Login() {
       }
     }
   };
-
   return (
     <>
       <div className='formContainer'>
         <h2 className='loginLabel'>Welcome Back!</h2>
         <ErrorMessages errors={errors} incorrectPassword={incorrectPassword} user_password={user_password}
 />
-
         <Form onSubmit={handleSubmit} className="loginForm">
           <Form.Group controlId="formBasicEmail">
             <Form.Label>E-mail:</Form.Label>
@@ -91,9 +88,17 @@ function Login() {
             Sign Up For Free
           </Button>
         </Link>
+        <ReactModal
+        isOpen={isModalOpen}
+        onRequestClose={() => setIsModalOpen(false)}
+        contentLabel="login Successful Modal"
+        ariaHideApp={false}
+        className="login-modal"
+      >
+        <h2 className='login-sucess'>login Successful</h2>
+      </ReactModal>
       </div>
     </>
   );
 }
-
 export default Login;

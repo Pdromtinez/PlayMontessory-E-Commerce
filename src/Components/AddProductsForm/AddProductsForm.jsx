@@ -3,6 +3,7 @@ import { Form, Button, Col } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom"; // Importa useNavigate
 import './AddProductsForm.css'
+
 const AddProductForm = () => {
   const navigate = useNavigate(); 
 
@@ -118,7 +119,7 @@ const AddProductForm = () => {
         <Button className= 'buttonSubmit buttonLogin' variant="warning" type="submit"> {/* Cambio de color a naranja */}
           Add Product
         </Button>
-        <Link to="/products" className=" btn btn-secondary ml-2 buttonSubmit buttonProducts">View Products</Link> {/* Botón secundario de Bootstrap */}
+        <Link to="/" className=" btn btn-secondary ml-2 buttonSubmit buttonProducts">View Products</Link> {/* Botón secundario de Bootstrap */}
         </div>
       </Form>
     </div>

@@ -85,15 +85,15 @@ const Products = () => {
           <Dropdown.Item onClick={() => setSelectedAge('4-5')}>4-5</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
-      <Row>
+      <Row className="rowcard">
         {products.map((product) => (
           <Col key={product.id} xs={12} sm={6} md={4} lg={3}>
             <Card className="mb-4">
-              <Card.Img src={product.image.secure_url} alt={product.image} />
+              <Card.Img src={product.image.secure_url} alt={product.image} width="300" height="300"/>
               <Card.Body>
                 <Card.Title className="cardTitle">{product.product_title}</Card.Title>
                 <Accordion defaultActiveKey="0">
-                  <Accordion.Item eventKey="0">
+                  <Accordion.Item eventKey="1">
                     <Accordion.Header>Read More</Accordion.Header>
                     <Accordion.Body>
                       <Card.Text className="brand">Brand: {product.product_brand}</Card.Text>
@@ -114,7 +114,6 @@ const Products = () => {
           </Col>
         ))}
       </Row>
-      <button onClick={ async (e) => {console.log(await isUserAdmin())}}>hola</button>
     </Container>
    
   );
