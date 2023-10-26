@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Card, Col, Container, Row, Accordion, Dropdown, Button } from "react-bootstrap";
 import ClickCounter from "../../Components/Counter/counter";
+import './DashboardAdmin.css'
 
 function DashboardAdmin() {
 
@@ -114,7 +115,7 @@ const updateCount = (productId, newCount) => {
                   <Card.Body>
                     <Card.Title className="cardTitle">{product.product_title}</Card.Title>
                     <Accordion defaultActiveKey="0">
-                      <Accordion.Item eventKey="0">
+                      <Accordion.Item eventKey="1">
                         <Accordion.Header>Read More</Accordion.Header>
                         <Accordion.Body>
                           <Card.Text className="brand">Brand: {product.product_brand}</Card.Text>
@@ -128,11 +129,11 @@ const updateCount = (productId, newCount) => {
                     <ClickCounter
                       initialCount={product.product_stock}
                       onUpdate={(newCount) => updateCount(product.id, newCount)}
-                      className="BtnCart addBtn"
+                      className="adminButton"
                     />
 
-                    <Button variant="danger" onClick={() => deleteProduct(product.id)}>
-                        Eliminar Producto
+                    <Button className= "deleteButton" variant="danger" onClick={() => deleteProduct(product.id)}>
+                        Delete Product
                     </Button>
                   </Card.Body>
                 </Card>

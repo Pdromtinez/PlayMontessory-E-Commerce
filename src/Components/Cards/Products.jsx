@@ -89,7 +89,7 @@ const Products = () => {
               <Card.Body>
                 <Card.Title className="cardTitle">{product.product_title}</Card.Title>
                 <Accordion defaultActiveKey="0">
-                  <Accordion.Item eventKey="0">
+                  <Accordion.Item eventKey="1">
                     <Accordion.Header>Read More</Accordion.Header>
                     <Accordion.Body>
                       <Card.Text className="brand">Brand: {product.product_brand}</Card.Text>
