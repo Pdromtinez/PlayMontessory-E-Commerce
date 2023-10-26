@@ -38,7 +38,6 @@ const router = createBrowserRouter ([
             },
         ]
     }
-])//Pedrom23@gmail.com
-    //hola234
+])
 
 export default router;
