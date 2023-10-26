@@ -2,10 +2,8 @@ import { createBrowserRouter } from "react-router-dom";
 import Root from "./root";
 import Register from "../pages/register/Register";
 import Products from "../Components/Cards/Products";
-import DashboardAdmin from "../pages/AdminProductManagement/DashboardAdmin";
 import Login from "../pages/register/Login";
 import AboutUs from "../pages/AboutUs/AboutUs";
-import AddProductForm from "../Components/AddProductsForm/AddProductsForm"
 import MiComponente from "../Components/auth/authComponent";
 
 
