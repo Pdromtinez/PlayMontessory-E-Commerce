@@ -1,14 +1,15 @@
-import { useState, useEffect} from 'react';
+import { useState} from 'react';
 import { Form, Button } from 'react-bootstrap';
 import "./login.css";
 import { Link } from 'react-router-dom';
 import { loginSchemas } from '../../../Server/schemas/auth.schema';
 import { useNavigate } from 'react-router-dom';
 import ErrorMessages from '../../ErrorMessages/ErrorMessages';
-
+import ReactModal from 'react-modal';
 
 function Login() {
   const navigate = useNavigate();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [user_email, setEmail] = useState();
   const [user_password, setPassword] = useState();
@@ -33,8 +34,12 @@ function Login() {
       });
 
       if (response.ok) {
-        navigate('/products');
-      } 
+        setIsModalOpen(true);
+        setTimeout(() => {
+          setIsModalOpen(false);
+          navigate('/');
+        }, 3000);
+      }
       if (response.status === 401) {
           setIncorrectPassword('Incorrect password');
         }
@@ -88,6 +93,15 @@ function Login() {
             Sign Up For Free
           </Button>
         </Link>
+        <ReactModal
+        isOpen={isModalOpen}
+        onRequestClose={() => setIsModalOpen(false)}
+        contentLabel="login Successful Modal"
+        ariaHideApp={false}
+        className="login-modal"
+      >
+        <h2 className='login-sucess'>login Successful</h2>
+      </ReactModal>
       </div>
     </>
   );

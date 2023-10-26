@@ -87,3 +87,20 @@
   align-items: center;
 }
 
+
+.login-modal {
+  position: absolute;
+  top: 10px;
+  left: 1100px;
+  width: 200px;
+  height: 90px;
+  padding: 10px;
+  border: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  background-color: #F5F2EA;
+  text-align: center;
+}
+.login-sucess {
+  color: rgb(1, 221, 1);
+  font-size: 1.4em;
+}
