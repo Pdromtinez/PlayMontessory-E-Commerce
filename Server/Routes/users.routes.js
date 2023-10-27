@@ -8,8 +8,8 @@ const router = Router();
 router.post("/", verifyToken, isAdmin, createUser);
 router.get("/", getUsers);
 router.get("/:id/products");
-router.get("/:id", verifyToken, isAdmin, getUser);
-router.put("/:id", verifyToken, isAdmin, updateUser);
+router.get("/:id",  getUser);
+router.put("/:id", updateUser);
 router.delete("/:id", verifyToken, isAdmin, deleteUser);
 
 

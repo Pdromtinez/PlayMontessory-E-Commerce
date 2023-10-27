@@ -11,7 +11,7 @@ const router = Router();
 router.post("/", validateSchema(createRoleSchemas), verificarToken, isAdmin, createRoles);
 router.get("/", getRoles);
 router.get("/:id", getRole );
-router.put("/:id", validateSchema(createRoleSchemas), verificarToken, isAdmin, updateRole );
+router.put("/:id", validateSchema(createRoleSchemas), updateRole );
 //router.delete("/:id", );
 
 
