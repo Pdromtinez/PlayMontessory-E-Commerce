@@ -4,7 +4,7 @@ export default async function isUserAdmin() {
         const tokenValue = cookieString.split('=')[1];
 
         const response = 
-        await fetch('http://localhost:6700/playmontessori/users', {
+        await fetch('https://playmontessori.onrender.com/playmontessori/users', {
             method: 'GET',
             headers: {
                 'Authorization': `${tokenValue}`
