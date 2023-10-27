@@ -1,4 +1,4 @@
-const API_URL =  "http://localhost:6700/playmontessori/"
+const API_URL =  "https://playmontessori.onrender.com/playmontessori/"
 
 export const apiReq = {
     postProducts: async (customHeaders) =>{

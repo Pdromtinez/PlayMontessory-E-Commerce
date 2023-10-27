@@ -29,7 +29,7 @@ function Register() {
     };
     try {
       registerSchemas.parse(formData);
-      const response = await fetch('http://localhost:6700/playmontessori/register', {
+      const response = await fetch('https://playmontessori.onrender.com/playmontessori/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -39,7 +39,7 @@ const AddProductForm = () => {
       
       }
       
-        const response = await fetch('http://localhost:6700/playmontessori/products', {
+        const response = await fetch('https://playmontessori.onrender.com/playmontessori/products', {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
