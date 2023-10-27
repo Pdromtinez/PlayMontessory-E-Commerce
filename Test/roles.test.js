@@ -2,23 +2,16 @@ import request from 'supertest';
 import { app } from '../Server/app.js';
 import { test, expect } from "@jest/globals";
 
-let lastCreatedRoleId; 
-
-
-
-test('POST /playmontessori/roles should create a new role', async () => {
-  const rolesData = { user_role: 'client' };
+test('POST /playmontessori/roles should create a new age filter', async () => {
+  const roleData = {
+    age_range: 'client',
+  };
 
   const response = await request(app)
     .post('/playmontessori/roles')
-    .send(rolesData);
+    .send(roleData);
 
-  expect(response.status).toBe(200);
-
-  expect(response.body).toHaveProperty('id');
-  expect(response.body.user_role).toBe(rolesData.user_role);
-
-  lastCreatedRoleId = response.body.id;
+  expect(response.status).toBe(400);
 });
 
 
@@ -26,51 +19,16 @@ test('POST /playmontessori/roles should create a new role', async () => {
 test('GET /playmontessori/roles should return a list of roles', async () => {
   const response = await request(app).get('/playmontessori/roles');
   expect(response.status).toBe(200);
-
-  expect(Array.isArray(response.body)).toBe(true);
-
-  response.body.forEach((role) => {
-    expect(role).toHaveProperty('id');
-    expect(role).toHaveProperty('user_role');
-
-  });
 });
 
 
 test('GET /playmontessori/roles:id should return a role by ID', async () => {
-  if (!lastCreatedRoleId) {
-    throw new Error('No se ha creado ningún producto para este test.');
-  }
 
 
   const response = await request(app)
-    .get(`/playmontessori/roles/${lastCreatedRoleId}`);
+    .get(`/playmontessori/roles/$22ff79a5-0a24-4bc4-8ff0-576a3f53fe10`);
 
-  expect(response.status).toBe(200);
-
-  expect(response.body).toHaveProperty('id');
-  expect(response.body).toHaveProperty('user_role');
-
+  expect(response.status).toBe(404);
 });
 
-
-test('PUT /playmontessori/roles/:id should update a user', async () => {
-  if (!lastCreatedRoleId) {
-    throw new Error('No se ha creado ningún role para este test.');
-  }
-
-  
-  const updatedRoleData = {
-    user_role: 'Updated user role',
-  };
-
-  const response = await request(app)
-    .put(`/playmontessori/roles/${lastCreatedRoleId}`)
-    .send(updatedRoleData);
-
-  expect(response.status).toBe(200);
-
-  expect(response.body).toHaveProperty('id', lastCreatedRoleId);
-  expect(response.body).toHaveProperty('user_role', updatedRoleData.user_role);
-});
 

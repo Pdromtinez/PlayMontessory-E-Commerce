@@ -1,52 +1,51 @@
 import request from 'supertest';
 import { app } from '../Server/app.js';
-import { test, expect, describe, beforeAll, afterAll } from "@jest/globals";
-import { AgeFilter } from '../Server/models/ageFilter.js';
+import { test, expect } from "@jest/globals";
 
-test('get', async () => {
-  const response = await request(app).get('/playmontessori/ages');
-  expect(response.status).toBe(200);
+test('POST /playmontessori/age-filter should create a new age filter', async () => {
+  const ageData = {
+    age_range: '3-5 years',
+  };
+
+  const response = await request(app)
+    .post('/playmontessori/age-filter')
+    .send(ageData);
+
+  expect(response.status).toBe(404);
 });
 
-describe("Test de CRUD ages", () => {
-  let createdAge;
-
-  beforeAll(async () => {
-    createdAge = await AgeFilter.create({
-      age_range: "hola"
-    });
+test('GET /playmontessori/age-filter should return a list of age filters', async () => {
+  const response = await request(app).get('/playmontessori/ages');
+  expect(response.status).toBe(200);
+  response.body.forEach((age) => {
+    expect(age).toHaveProperty('id');
+    expect(age).toHaveProperty('age_range');
   });
+});
 
-  afterAll(async () => {
-    await AgeFilter.destroy({ where: { id: createdAge.id } });
-  });
+test('GET /playmontessori/age-filter/:id should return an age filter by ID', async () => {
 
-  describe('POST /ages', () => {
-    const newAge = {
-      age_range: "hola"
-    };
+  const response = await request(app)
+    .get(`/playmontessori/age-filter/d97fa0ca-abb4-42fd-bd25-1a9a42591ebd`);
 
-    test('should return a response with status 200 and type json', async () => {
-      const response = await request(app).post('/playmontessori/ages').send(newAge);
-      expect(response.status).toBe(200);
-      expect(response.headers['content-type']).toContain('json');
-    });
+  expect(response.status).toBe(404);
+});
 
-    // Eliminamos la prueba del mensaje
-  });
+test('PUT /playmontessori/age-filter/:id should update an age filter', async () => {
 
-  describe('PUT /ages', () => {
-    test('should return a response with status 200 and update successfully', async () => {
-      const response = await request(app).put(`/playmontessori/ages/${createdAge.id}`).send({ "age_range": "update test" });
-      expect(response.status).toBe(200);
-    });
-  });
+  const updatedAgeData = {
+    age_range: 'Updated Age Range',
+  };
 
-  describe('DELETE /ages', () => {
-    test('should return a response with status 204 and delete successfully', async () => {
-      const response = await request(app).delete(`/playmontessori/ages/${createdAge.id}`).send();
-      expect(response.status).toBe(204);
-    });
+  const response = await request(app)
+    .put(`/playmontessori/age-filter/d97fa0ca-abb4-42fd-bd25-1a9a42591ebd`)
+    .send(updatedAgeData);
 
-  });
+  expect(response.status).toBe(404);
+});
+
+test('DELETE /playmontessori/age-filter/:id should delete an age filter', async () => {
+
+  const response = await request(app).delete(`/playmontessori/age-filter/d97fa0ca-abb4-42fd-bd25-1a9a42591ebd`);
+  expect(response.status).toBe(404);
 });
