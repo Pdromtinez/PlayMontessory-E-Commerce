@@ -12,7 +12,7 @@ const Products = () => {
   
   useEffect(() => {
     // Realizar una solicitud al servidor para obtener la correspondencia de edades
-    fetch('http://localhost:6700/playmontessori/ages')
+    fetch('https://playmontessori.onrender.com/playmontessori/ages')
       .then((response) => response.json())
       .then((data) => {
         // Crear un objeto de mapeo de IDs a rangos de edades
@@ -29,8 +29,8 @@ const Products = () => {
 
   useEffect(() => {
     const url = selectedAge === 'All'
-      ? 'http://localhost:6700/playmontessori/products/'
-      : `http://localhost:6700/playmontessori/ages/${selectedAge}/products/`;
+      ? 'https://playmontessori.onrender.com/playmontessori/products/'
+      : `https://playmontessori.onrender.com/playmontessori/ages/${selectedAge}/products/`;
 
     fetch(url)
       .then((response) => response.json())
@@ -50,7 +50,7 @@ const Products = () => {
     if (productToUpdate) {
       const updatedProduct = { ...productToUpdate, product_stock: newCount };
 
-      fetch(`http://localhost:6700/playmontessori/products/${productId}`, {
+      fetch(`https://playmontessori.onrender.com/playmontessori/products/${productId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
