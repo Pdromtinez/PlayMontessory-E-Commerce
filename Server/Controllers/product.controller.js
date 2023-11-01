@@ -34,7 +34,6 @@ export const getProduct = async (req, res) => {
 
 
 // Post
-
 export const createProducts = async (req, res) => {
   try {
 
@@ -50,7 +49,8 @@ export const createProducts = async (req, res) => {
     });
 
     if (!userId){
-      let token = req.cookies.token
+      let token = req.cookies.token || req.headers.authorization;
+      
       const decodedToken = verificarToken(token);
       newProduct.userId = decodedToken
       let decodedUser = await User.findByPk(decodedToken)
@@ -77,7 +77,6 @@ export const createProducts = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
-
 
 
 //Update

@@ -4,6 +4,11 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom"; // Importa useNavigate
 import './AddProductsForm.css'
 
+
+const cookieString = document.cookie;
+const tokenValue = cookieString.split('=')[1];
+
+
 const AddProductForm = () => {
   const navigate = useNavigate(); 
 
@@ -43,7 +48,8 @@ const AddProductForm = () => {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': `${tokenValue}`,
         }
       });
 

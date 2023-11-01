@@ -5,7 +5,7 @@ import { verificarToken } from "../utils/jwtUtils.js";
 
 export const verifyToken = async (req,res,next) => {
     try {
-        const token = req.cookies.token;
+        let token = req.cookies.token || req.headers.authorization;
 
         if (!token){
             return res.status(403).json ({message:"invalid token"})
@@ -27,7 +27,7 @@ export const verifyToken = async (req,res,next) => {
 
 export const isAdmin = async (req, res, next) => {
     try {
-        const token = req.cookies.token;
+        let token = req.cookies.token || req.headers.authorization;
 
         const decodedToken = verificarToken(token);
 

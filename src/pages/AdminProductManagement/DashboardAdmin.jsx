@@ -4,6 +4,11 @@ import ClickCounter from "../../Components/Counter/counter";
 import { Link } from "react-router-dom";
 import './DashboardAdmin.css'
 
+
+        const cookieString = document.cookie;
+        const tokenValue = cookieString.split('=')[1];
+
+
 function DashboardAdmin() {
 
 const [products, setProducts] = useState([]);
@@ -13,7 +18,11 @@ const [ageMapping, setAgeMapping] = useState({}); // Para almacenar la correspon
 
 useEffect(() => {
   // Realizar una solicitud al servidor para obtener la correspondencia de edades
-  fetch('https://playmontessori.onrender.com/playmontessori/ages')
+  fetch('https://playmontessori.onrender.com/playmontessori/ages',  
+    { headers: {
+    'Authorization': `${tokenValue}`
+  }
+})
     .then((response) => response.json())
     .then((data) => {
       // Crear un objeto de mapeo de IDs a rangos de edades
@@ -33,7 +42,11 @@ useEffect(() => {
     ? 'https://playmontessori.onrender.com/playmontessori/products/'
     : `https://playmontessori.onrender.com/playmontessori/ages/${selectedAge}/products/`;
 
-  fetch(url)
+  fetch(url, {
+    headers: {
+    'Authorization': `${tokenValue}`
+  }
+})
     .then((response) => response.json())
     .then((data) => {
       setProducts(data);
@@ -53,6 +66,7 @@ const updateCount = (productId, newCount) => {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        'Authorization': `${tokenValue}`
       },
       body: JSON.stringify(updatedProduct),
     })
@@ -75,6 +89,10 @@ const updateCount = (productId, newCount) => {
       // Realizar la solicitud de eliminación al servidor
       fetch(`https://playmontessori.onrender.com/playmontessori/products/${productId}`, {
         method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          'Authorization': `${tokenValue}`
+        }
       })
         .then((response) => {
           if (response.ok) {
